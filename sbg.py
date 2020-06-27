@@ -3,10 +3,13 @@ from datetime import datetime
 from markdown2 import markdown
 from jinja2 import Environment, PackageLoader
 
-STATIC_PREFIX = '/'
 
 env = Environment(loader=PackageLoader('sbg', 'templates'))
 post_template = env.get_template('post.html')
+
+# hardcoding bad blah
+#env.globals['ROOT'] = '../tsbohc.github.io'
+#env.globals['ROOT'] = 'https://tsbohc.github.io'
 
 HTML_POSTS = {}
 
@@ -30,7 +33,7 @@ for file_name in HTML_POSTS:
 
     post_html = post_template.render(post=post_data)
 
-    with open('posts/' + file_name[:-2] + 'html', 'w') as post:
+    with open(file_name[:-2] + 'html', 'w') as post:
         post.write(post_html)
 
 # TODO:
