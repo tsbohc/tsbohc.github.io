@@ -3,6 +3,7 @@
 {% block title %} {{ post.title }} {% endblock %}
 
 {% block content %}
-  <h1> {{ post.title }} </h1>
-  <p> {{ post.content }} </p>
+
+{% include "post_content.html" %}
+
 {% endblock %}

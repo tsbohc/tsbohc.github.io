@@ -1,11 +1,80 @@
-#wrap {
-  width: 650px;
-  margin: auto;
+@font-face {
+  font-family: Header;
+  src: url(nexa_bold.otf);
 }
 
-#header {
-  font-family: Nexa;
-  font-size: 24pt;
+@font-face {
+  font-family: Body;
+  src: url(librebaskerville-regular.ttf);
+}
+
+@font-face {
+  font-family: Title;
+  src: url(librebaskerville-bold.ttf);
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 0 0 230px 0;
+  font: 12pt/1.8 Body, serif;
+  color: #404040; /*505050*/
+}
+
+p {
+  margin: 0 0 9px 0;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+article a {
+  background-position: center 90%;
+  background: linear-gradient(to bottom, transparent 0%, #ffefa6 0) center bottom/100% 30% no-repeat;
+  transition: all 0.1s ease;
+}
+
+article a:hover {
+  background-size: 100% 100%;
+}
+
+.date {
+  width: 135px;
+  float: left;
+  text-align: right;
+  padding: 10px 0 0 0;
+}
+
+h2 {
+  font-size: 19pt;
+}
+
+article {
+  width: 550px;
+  float: right;
+  padding: 0 0 30px 0;
+  margin: 0 0 30px 0;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+main {
+  width: 700px;
+  margin-left: calc(50vw - 400px); /*50% - date - half a post width*/
+}
+
+header {
+  width: 550px;
+  float: right;
+  font-family: Header;
+  font-size: 45pt;
   line-height: 1;
   text-transform: uppercase;
   color: #000;
@@ -13,3 +82,4 @@
   margin: 35px -20px 35px -20px;
   border-bottom: 1px solid #e8e8e8;
 }
+

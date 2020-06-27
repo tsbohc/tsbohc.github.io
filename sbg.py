@@ -3,38 +3,43 @@ from datetime import datetime
 from markdown2 import markdown
 from jinja2 import Environment, PackageLoader
 
-
 env = Environment(loader=PackageLoader('sbg', 'templates'))
-post_template = env.get_template('post.html')
 
-# hardcoding bad blah
-#env.globals['ROOT'] = '../tsbohc.github.io'
-#env.globals['ROOT'] = 'https://tsbohc.github.io'
+home_template = env.get_template('home.html')
+post_template = env.get_template('post.html')
 
 HTML_POSTS = {}
 
-# store post html into a dictionary
+# store post html and metadata into a dictionary
 for file_name in os.listdir('content'):
     post_path = os.path.join('content', file_name)
-
     with open(post_path, 'r') as post:
         HTML_POSTS[file_name] = markdown(post.read(), extras=['metadata'])
 
 # generate invididual posts
+posts_data = []
 for file_name in HTML_POSTS:
     post_metadata = HTML_POSTS[file_name].metadata
 
     post_data = {
         'title': post_metadata['title'],
-        #'date': post_metadata['date'],
         'content': HTML_POSTS[file_name],
-        'tags': post_metadata['tags']
+        'date': datetime.strptime(post_metadata['date'], '%d-%m-%y-%H-%M').strftime("%b, %d"),
+        'tags': post_metadata['tags'],
+        'name': file_name[:-3]
     }
 
+    posts_data.append(post_data)
     post_html = post_template.render(post=post_data)
 
-    with open(file_name[:-2] + 'html', 'w') as post:
+    with open(post_data['name'] + '.html', 'w') as post:
         post.write(post_html)
+
+posts_data.sort(key=lambda x:x['date'], reverse=True)
+home_html = home_template.render(posts=posts_data)
+
+with open('index.html', 'w') as index:
+    index.write(home_html)
 
 # TODO:
 # if date is not set, set current time (file creation time?)
