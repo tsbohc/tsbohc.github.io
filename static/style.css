@@ -13,14 +13,21 @@
   src: url(librebaskerville-bold.ttf);
 }
 
+@font-face {
+  font-family: Code;
+  src: url(FiraCode-Medium.ttf);
+}
+
 html {
   height: 100%;
   box-sizing: border-box;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  min-height: 100%;
+  min-height: 140%;
   box-sizing: border-box;
   padding: 0 0 230px 0;
   font: 12pt/1.8 Body, serif;
@@ -66,7 +73,9 @@ article {
 }
 
 main {
+  flex: 1 1 auto;  /*grow vertically*/
   width: 700px;
+  margin-bottom: 20px;
   margin-left: calc(50vw - 400px); /*50% - date - half a post width*/
 }
 
@@ -83,3 +92,63 @@ header {
   border-bottom: 1px solid #e8e8e8;
 }
 
+footer {
+  font-size: 12pt;
+  line-height: 1.3;
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 0;
+  background: #090909;
+  text-align: center;
+  color: #606060;
+}
+
+footer #marisa {
+  width: 128px;
+  height: auto;
+  margin: -64px 0 24px 0;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.3);
+}
+
+footer a {color:#808080;}
+footer a:hover, #footer a:active {color: #eee;}
+
+code {
+  font-size: 11pt;
+  font-family: Code;
+}
+
+pre {
+  margin: 25px -20px 33px -20px;
+  padding: 1.75em 20px 1.75em 20px;
+  white-space: pre-wrap;       /* Since CSS 2.1 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  background-image: -webkit-linear-gradient(#ffffff 50%, #fafafa 50%);
+  background-image:    -moz-linear-gradient(#ffffff 50%, #fafafa 50%);
+  background-image:     -ms-linear-gradient(#ffffff 50%, #fafafa 50%);
+  background-image:      -o-linear-gradient(#ffffff 50%, #fafafa 50%);
+  background-image:         linear-gradient(#ffffff 50%, #fafafa 50%);
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-size: 3.5em 3.5em;
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  border-radius: 0px;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  box-shadow:
+    /* The top layer shadow */
+    0 1px 1px rgba(0,0,0,0.1),
+    /* The second layer */
+    0 10px 0 -6px #eee,
+    /* The second layer shadow */
+    0 10px 1px -5px rgba(0,0,0,0.15),
+     /* The third layer */
+    0 20px 0 -12px #eee,
+    /* The third layer shadow */
+    0 20px 1px -11px rgba(0,0,0,0.15);
+}

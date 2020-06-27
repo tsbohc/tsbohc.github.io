@@ -1,0 +1,136 @@
+code, pre {
+color:#fdce93;
+background-color:#3f3f3f;
+}
+
+code .hll {
+background-color:#222;
+}
+
+code .err {
+color:#e37170;
+background-color:#3d3535;
+}
+
+code .k {
+color:#f0dfaf;
+}
+
+code .p {
+color:#41706f;
+}
+
+code .cs {
+color:#cd0000;
+font-weight:700;
+}
+
+code .gd {
+color:#cd0000;
+}
+
+code .ge {
+color:#ccc;
+font-style:italic;
+}
+
+code .gr {
+color:red;
+}
+
+code .go {
+color:gray;
+}
+
+code .gs {
+color:#ccc;
+font-weight:700;
+}
+
+code .gu {
+color:purple;
+font-weight:700;
+}
+
+code .gt {
+color:#0040D0;
+}
+
+code .kc {
+color:#dca3a3;
+}
+
+code .kd {
+color:#ffff86;
+}
+
+code .kn {
+color:#dfaf8f;
+font-weight:700;
+}
+
+code .kp {
+color:#cdcf99;
+}
+
+code .kr {
+color:#cdcd00;
+}
+
+code .ni {
+color:#c28182;
+}
+
+code .ne {
+color:#c3bf9f;
+font-weight:700;
+}
+
+code .nn {
+color:#8fbede;
+}
+
+code .vi {
+color:#ffffc7;
+}
+
+code .c,.preview-zenburn code .g,.preview-zenburn code .cm,.preview-zenburn code .cp,.preview-zenburn code .c1 {
+color:#7f9f7f;
+}
+
+code .l,.preview-zenburn code .x,.preview-zenburn code .no,.preview-zenburn code .nd,.preview-zenburn code .nl,.preview-zenburn code .nx,.preview-zenburn code .py,.preview-zenburn code .w {
+color:#ccc;
+}
+
+code .n,.preview-zenburn code .nv,.preview-zenburn code .vg {
+color:#dcdccc;
+}
+
+code .o,.preview-zenburn code .ow {
+color:#f0efd0;
+}
+
+code .gh,.preview-zenburn code .gp {
+color:#dcdccc;
+font-weight:700;
+}
+
+code .gi,.preview-zenburn code .kt {
+color:#00cd00;
+}
+
+code .ld,.preview-zenburn code .s,.preview-zenburn code .sb,.preview-zenburn code .sc,.preview-zenburn code .sd,.preview-zenburn code .s2,.preview-zenburn code .se,.preview-zenburn code .sh,.preview-zenburn code .si,.preview-zenburn code .sx,.preview-zenburn code .sr,.preview-zenburn code .s1,.preview-zenburn code .ss {
+color:#cc9393;
+}
+
+code .m,.preview-zenburn code .mf,.preview-zenburn code .mh,.preview-zenburn code .mi,.preview-zenburn code .mo,.preview-zenburn code .il {
+color:#8cd0d3;
+}
+
+code .na,.preview-zenburn code .nt {
+color:#9ac39f;
+}
+
+code .nb,.preview-zenburn code .nc,.preview-zenburn code .nf,.preview-zenburn code .bp,.preview-zenburn code .vc {
+color:#efef8f;
+}

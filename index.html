@@ -6,6 +6,7 @@
   <title>tsbohc</title>
   <link href="static/reset.css" rel="stylesheet" type="text/css">
   <link href="static/style.css" rel="stylesheet" type="text/css">
+  <link href="static/github.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -23,33 +24,47 @@
         A New Beginning
       </a>
     </h2>
-    <p>Today, it dawned on me that I have that tumblr blog and that I haven't posted anything in a while. And instead of pulling up vim and writing something profound, I thought to myself, "fuck tumblr, I'm gonna move to github."</p>
+    <p>It dawned on me that I have that tumblr blog and that I haven't posted anything in a while. And instead of pulling up vim and writing something profound, I thought to myself, "fuck tumblr, I'm gonna move to github."</p>
 
 <p>That turned out simple enough, but of course I didn't stop there. I thought, "so they have that static website generator, and it looks pretty neat".</p>
 
 <p>But it wasn't autistic enough for me. And there I was, thinking, "python's pretty fun to iterate on. I should use that to make my own generator."</p>
 
-<p>And here we are. Hopefully, as I'm writing this while taking a break from the code.</p>
+<p>And here we are.</p>
+
+<p>The funny thing is, at the time of writing the generator itself is &lt; 40 lines of code. Making things pretty and figuring out the templates did take a long time, though.</p>
+
+<p>Speaking of pretty things and code, check out the snippet below:</p>
+
+<div class="codehilite"><pre><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="s">&quot;the answer to the ultimate question of life, the universe, and everything there is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">deep_thought</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Pure stylesheet magic. For the record, the actual post looks like this:</p>
+
+<pre><code>```python
+def deep_thought():
+  time.wait(75000000 * 31556952)
+</code></pre>
+
+<p>The formatting is done fully automatically, I just have to provide a hint at the language in the block.</p>
 
   </article>
   <div class="date">Jun, 27</div>
 
 
-  
-  <article>
-    <h2>
-      <a href="test.html">
-        test
-      </a>
-    </h2>
-    <p>this is a test</p>
-
-  </article>
-  <div class="date">Jan, 01</div>
-
-
 
 
   </main>
+  <footer>
+    <img id="marisa" alt src="static/marisa.png">
+    <p>anime, programming, and autism</p>
+    <a href="https://vk.com/id264238136">seancallous@vk</a>
+    &
+    <a href="https://myanimelist.net/animelist/seancallous?status=7&order=4&order2=0">mal</a>
+    <img id="heart" src="static/heart.png" width="13" height="12">
+  </footer>
+
 </body>
 </html>

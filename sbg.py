@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+from pygments import highlight
 from markdown2 import markdown
 from jinja2 import Environment, PackageLoader
 
@@ -14,7 +15,7 @@ HTML_POSTS = {}
 for file_name in os.listdir('content'):
     post_path = os.path.join('content', file_name)
     with open(post_path, 'r') as post:
-        HTML_POSTS[file_name] = markdown(post.read(), extras=['metadata'])
+        HTML_POSTS[file_name] = markdown(post.read(), extras=['metadata', 'fenced-code-blocks'])
 
 # generate invididual posts
 posts_data = []
@@ -35,9 +36,9 @@ for file_name in HTML_POSTS:
     with open(post_data['name'] + '.html', 'w') as post:
         post.write(post_html)
 
+# compile index.html
 posts_data.sort(key=lambda x:x['date'], reverse=True)
 home_html = home_template.render(posts=posts_data)
-
 with open('index.html', 'w') as index:
     index.write(home_html)
 
@@ -49,3 +50,5 @@ with open('index.html', 'w') as index:
 # to prevent link clashing
 
 # pseudo-philosophy, anime, and programming
+
+
