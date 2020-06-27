@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}tsbohc{% endblock %}</title>
+  <style rel="stylesheet" href="static/normalize.css">
+  <style rel="stylesheet" href="{{ STATIC_PREFIX }}static/style.css">
+  <style>
+/*
+#wrap {
+  width: 650px;
+  margin: auto;
+}
+
+#header {
+  font-family: Nexa;
+  font-size: 24pt;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #000;
+  padding: 0 20px 0 20px;
+  margin: 35px -20px 35px -20px;
+  border-bottom: 1px solid #e8e8e8;
+}
+*/
+
+  </style>
+</head>
+
+<body>
+  <a href="{{ STATIC_PREFIX }}a-new-beginning.html">asd</a>
+  <div id="wrap">
+    <div id="header">
+      <h1>THE SECRET<br> BITTERNESS<br> OF HONEY CAKE</h1>
+    </div>
+    {% block content %}{% endblock %}
+    <hr>
+  </div>
+</body>
+</html>
