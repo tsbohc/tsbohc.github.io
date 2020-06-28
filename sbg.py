@@ -2,6 +2,7 @@ import inflect
 import os
 import sys
 import argparse
+import math
 from datetime import datetime, date
 from pygments import highlight
 from markdown2 import markdown
@@ -52,12 +53,52 @@ def recompile():
         with open(post_data['name'] + '.html', 'w') as post:
             post.write(post_html)
 
-    # compile index.html
+    # sort by date in reverse
     posts_data.sort(key=lambda x:x['raw_date'], reverse=True)
-    home_html = home_template.render(posts=posts_data)
-    print('index.html')
-    with open('index.html', 'w') as index:
-        index.write(home_html)
+
+    # generate index-0.html, index-1.html, and etc
+    split_after = 5
+    post_n = 0
+    split_n = 0
+    temp_data = []
+    for index, post_data in enumerate(posts_data):
+        print(index)
+        temp_data.append(post_data)
+        post_n += 1
+        if post_n == split_after or index + 1 == len(posts_data):
+            if split_n == 0:
+                split = ''
+            else:
+                split = '-' + str(split_n)
+
+            past_n = split_n + 1
+            if past_n >= math.ceil(len(posts_data) / split_after):
+                past_n = -1
+            else:
+                past_n = '-' + str(past_n)
+
+            future_n = split_n - 1
+            if future_n == 0:
+                future_n = ''
+            elif future_n < 0:
+                future_n = -1
+            else:
+                future_n = '-' + str(future_n)
+
+
+            temp_html = home_template.render(posts=temp_data, past=past_n, future=future_n)
+            print('index' + split + '.html')
+            with open('index' + split + '.html', 'w') as index:
+                index.write(temp_html)
+
+            temp_data = []
+            post_n = 0
+            split_n += 1
+
+#    home_html = home_template.render(posts=posts_data)
+#    print('index.html')
+#    with open('index.html', 'w') as index:
+#        index.write(home_html)
 
     archive_html = archive_template.render(posts=posts_data)
     print('archive.html')

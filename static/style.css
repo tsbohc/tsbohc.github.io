@@ -49,13 +49,13 @@ a {
   color: #333;
 }
 
-.tags a, article a {
+#pagination a, .tags a, article a {
   background-position: center 90%;
   background: linear-gradient(to bottom, transparent 0%, #ffefa6 0) center bottom/100% 30% no-repeat;
   transition: all 0.1s ease;
 }
 
-.tags a:hover, article a:hover {
+#pagination a:hover, .tags a:hover, article a:hover {
   background-size: 100% 100%;
 }
 
@@ -108,6 +108,23 @@ header {
   padding: 0 20px 0 20px;
   margin: 35px -20px 35px -20px;
   border-bottom: 1px solid #e8e8e8;
+}
+
+#pagination {
+  width: 550px;
+  height: 50px;
+  float: right;
+}
+
+#pagination #future {
+  width: 225px;
+  float: left;
+}
+
+#pagination #past {
+  width: 225px;
+  text-align: right;
+  float: right;
 }
 
 footer {
