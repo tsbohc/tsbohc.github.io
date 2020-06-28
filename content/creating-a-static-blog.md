@@ -32,8 +32,8 @@ The second step is to take the parsed data, define how and where it should belon
 <div class="date">Jun, 28</div>
 ```
 
-The last step to write some logic while taking advantage of inheritance and nested templates. That's how we end up with customized, yet coheret pages.
+The last step to write some page composition logic while taking advantage of inheritance and nested templates. That's how we end up with customized, yet coherent pages.
 
-We should also tell things where they should be and how they should look with CSS.
+On that note, we should also tell things where they should be and how they should look with CSS.
 
-The rest is usability, maybe I'll add a tiny ecosystem with drafts and a database, but for now this should be enough.
+The rest is usability, later I might add a tiny ecosystem with drafts and a database, but for now this should be enough.
