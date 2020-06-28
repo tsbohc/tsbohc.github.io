@@ -23,7 +23,13 @@ html {
   box-sizing: border-box;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
   display: flex;
   flex-direction: column;
   position: relative;
@@ -43,13 +49,13 @@ a {
   color: #333;
 }
 
-article a {
+.tags a, article a {
   background-position: center 90%;
   background: linear-gradient(to bottom, transparent 0%, #ffefa6 0) center bottom/100% 30% no-repeat;
   transition: all 0.1s ease;
 }
 
-article a:hover {
+.tags a:hover, article a:hover {
   background-size: 100% 100%;
 }
 
@@ -58,6 +64,18 @@ article a:hover {
   float: left;
   text-align: right;
   padding: 10px 0 0 0;
+}
+
+.tags {
+  width: 550px;
+  text-align: center;
+  float: right;
+  margin-top: -46px;
+}
+
+.tags span {
+  background: #fff;
+  padding: 0 5px 0 5px;
 }
 
 h2 {
@@ -76,7 +94,7 @@ main {
   flex: 1 1 auto;  /*grow vertically*/
   width: 700px;
   margin-bottom: 20px;
-  margin-left: calc(50vw - 400px); /*50% - date - half a post width*/
+  margin-left: calc(50vw - 150px - 275px); /*50% - date - half a post width*/
 }
 
 header {
@@ -115,27 +133,24 @@ footer #marisa {
 footer a {color:#808080;}
 footer a:hover, #footer a:active {color: #eee;}
 
-code {
+pre code {
+  display: inline-block;
   font-size: 11pt;
   font-family: Code;
 }
 
 pre {
   margin: 25px -20px 33px -20px;
-  padding: 0.875em 20px 0.875em 20px;
+  padding: 10px 20px 10px 20px;
   white-space: pre-wrap;       /* Since CSS 2.1 */
-  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-  white-space: -pre-wrap;      /* Opera 4-6 */
-  white-space: -o-pre-wrap;    /* Opera 7 */
-  background-image: -webkit-linear-gradient(#ffffff 50%, #f9f9f9 50%);
-  background-image:    -moz-linear-gradient(#ffffff 50%, #f9f9f9 50%);
-  background-image:     -ms-linear-gradient(#ffffff 50%, #f9f9f9 50%);
-  background-image:      -o-linear-gradient(#ffffff 50%, #f9f9f9 50%);
-  background-image:         linear-gradient(#ffffff 50%, #f9f9f9 50%);
-  background-position: 0 -0.875em;
+
+  line-height:22px;
+  background:linear-gradient(180deg,#fff 0,#fff 22px,#f9f9f9 0);
+  background-size:44px 44px;
+  background-origin:content-box;
+  background-position: 0 -22px;
   background-repeat: repeat;
-  background-size: 3.5em 3.5em;
-  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
   border-radius: 0px;
   border-top: 1px solid #ddd;
   border-left: 1px solid #ddd;

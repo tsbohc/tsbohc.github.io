@@ -8,4 +8,9 @@
     {{ post.content }}
   </article>
   <div class="date">{{ post.date }}</div>
+  <div class="tags">
+    <span>
+      {% include "tags.html" %}
+    </span>
+  </div>
 {% endblock %}

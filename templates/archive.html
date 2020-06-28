@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<article>
+  <ul>
+  {% set current_month = { 'value': False } %} 
+  {% set current_year = { 'value': False } %} 
+  {% for post in posts %}
+    {% if post.date_year != current_year.value %}
+      {%- if current_year.update({'value':post.date_year}) %}{%- endif %} 
+      <h2>{{ post.date_year_words }}</h2>
+    {% endif %}
+    <li><a href="{{ post.name }}.html">{{ post.title }}</a> — {{ post.date }}<!-- {% include "tags.html" %}--></li>
+  {% endfor %}
+  </ul>
+</article>
+
+{% endblock %}
