@@ -44,12 +44,12 @@
 
 <p>To do that, we have to do two things. First, we'll create templates which will tell the data where to go:</p>
 
-<div class="codehilite"><pre><code><span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span><span class="x"></span>
+<div class="codehilite"><pre><code><span class="x">{ % block content % }</span>
 <span class="x">  &lt;article&gt;</span>
 <span class="x">    &lt;h2&gt; </span><span class="cp">{{</span> <span class="nv">post.title</span> <span class="cp">}}</span><span class="x"> &lt;/h2&gt;</span>
 <span class="x">    </span><span class="cp">{{</span> <span class="nv">post.content</span> <span class="cp">}}</span><span class="x"></span>
 <span class="x">  &lt;/article&gt;</span>
-<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">{ % endblock % }</span>
 </code></pre></div>
 
 <p>And, of course, write some logic. Python is a good choice, because we don't care about speed and it's highly semantic. I've always liked that trade off.</p>

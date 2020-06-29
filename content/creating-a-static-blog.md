@@ -23,12 +23,12 @@ So, this marks our first step, parsing and converting the input.
 To do that, we have to do two things. First, we'll create templates which will tell the data where to go:
 
 ```jinja
-{% block content %}
+{ % block content % }
   <article>
     <h2> {{ post.title }} </h2>
     {{ post.content }}
   </article>
-{% endblock %}
+{ % endblock % }
 ```
 
 And, of course, write some logic. Python is a good choice, because we don't care about speed and it's highly semantic. I've always liked that trade off.
