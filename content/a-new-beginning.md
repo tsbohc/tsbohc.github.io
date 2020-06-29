@@ -19,7 +19,7 @@ if __name__ == "__main__":
     main()
 ```
 
-Pure stylesheet magic. The posts are written in Markdown, which lets me do stuff like that with a single word and a few backticks.
+Pure stylesheet magic.
 
 Each time I make an edit, the pages are recompiled and served to a local http server with live reload. Whenever I want to update the website, I make a commit and push files to github.
 

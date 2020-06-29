@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title> creating a static blog </title>
+  <title> code is a relationship </title>
   <link href="static/reset.css" rel="stylesheet" type="text/css">
   <link href="static/style.css" rel="stylesheet" type="text/css">
   <link href="static/bw.css" rel="stylesheet" type="text/css">
@@ -22,39 +22,75 @@
   <article>
     <h2>
       <a href="creating-a-static-blog.html">
-        creating a static blog
+        code is a relationship
       </a>
     </h2>
-    <p>Code is like a relationship. It's all about the concept of inputs and outputs. You put something in, you get something out. A static website is a little like that.</p>
+    <p>It's all about the concept of inputs and outputs. You put something in, you get something out. A static website is a little like that.</p>
 
-<p>We're making a blog, so what's our input? I chose Markdown because I'm used to it and because it translates well to html. It looks something like this:</p>
+<p>What makes it static, is that data lives apart from the html. To accommodate for changes in the data, we have to recompile the whole thing. Thankfully, that's quick and easy to automate.</p>
+
+<p>So, what's our input? It looks something like this:</p>
 
 <pre><code>title: my favourite quote from cat's cradle
-date: 2020-06-28 19:11
 ---
 "Peculiar travel suggestions are dancing lessons from god."
 - Kurt Vonnegut
 </code></pre>
 
-<p>It's an in-line formatting language that has a bunch of stuff to quickly create lists, tables, code blocks like the one above, and etc. So, this marks our first step, parsing the input.</p>
+<p>Markdown is an in-line formatting language that can be used to quickly create lists, tables, code blocks like the one above, and etc. But, the biggest advantage is that it translates well to html.</p>
 
-<p>The second step is to take the parsed data, define how and where it should belong, and push it through some templates, producing freshly baked html. After that's done, we get this:</p>
+<p>So, this marks our first step, parsing and converting the input.</p>
+
+<p>To do that, we have to do two things. First, we'll create templates which will tell the data where to go:</p>
+
+<div class="codehilite"><pre><code><span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  &lt;article&gt;</span>
+<span class="x">    &lt;h2&gt; </span><span class="cp">{{</span> <span class="nv">post.title</span> <span class="cp">}}</span><span class="x"> &lt;/h2&gt;</span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">post.content</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">  &lt;/article&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+
+<p>And, of course, write some logic. Python is a good choice, because we don't care about speed and it's highly semantic. I've always liked that trade off.</p>
+
+<div class="codehilite"><pre><code><span class="k">for</span> <span class="n">post_name</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+    <span class="n">post_metadata</span> <span class="o">=</span> <span class="n">posts</span><span class="p">[</span><span class="n">post_name</span><span class="p">]</span><span class="o">.</span><span class="n">metadata</span>
+
+    <span class="n">post_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="n">post_metadata</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">],</span>
+        <span class="s">&#39;content&#39;</span><span class="p">:</span> <span class="n">posts</span><span class="p">[</span><span class="n">post_name</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">post_html</span> <span class="o">=</span> <span class="n">post_template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">post</span><span class="o">=</span><span class="n">post_data</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">post_name</span> <span class="o">+</span> <span class="s">&#39;.html&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">post</span><span class="p">:</span>
+        <span class="n">post</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">post_html</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Here we're going through the posts one by one, parsing their data, converting it, and pushing it through the template.</p>
+
+<p>This produces freshly baked html:</p>
 
 <div class="codehilite"><pre><code><span class="nt">&lt;article&gt;</span>
-  <span class="nt">&lt;h2&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;my-favourite-quote-from-cats-cradle.html&quot;</span><span class="nt">&gt;</span>
-      my favourite quote from cat&#39;s cradle
-    <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>my favourite quote from cat&#39;s cradle<span class="nt">&lt;/h2&gt;</span>
   <span class="nt">&lt;p&gt;</span>&quot;Peculiar travel suggestions are dancing lessons from god.&quot;<span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;p&gt;</span>- Kurt Vonnegut<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/article&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;date&quot;</span><span class="nt">&gt;</span>Jun, 28<span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 
-<p>The last step to write some page composition logic while taking advantage of inheritance and nested templates. That's how we end up with customized, yet coherent pages.</p>
+<p>We've got the structure down, but we're still missing styling. Let's fix that and make things pretty with CSS:</p>
 
-<p>On that note, we should also tell things where they should be and how they should look with CSS.</p>
+<div class="codehilite"><pre><code><span class="nt">article</span> <span class="p">{</span>
+  <span class="k">font</span><span class="o">:</span> <span class="m">12pt</span><span class="o">/</span><span class="m">1</span><span class="o">.</span><span class="m">8</span> <span class="n">Body</span><span class="o">,</span> <span class="k">serif</span><span class="p">;</span>
+  <span class="k">color</span><span class="o">:</span> <span class="m">#404040</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h2</span> <span class="p">{</span>
+  <span class="k">font-size</span><span class="o">:</span> <span class="m">19pt</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The last step is to write some composition logic which will manage the chunks of data we got above. Inheritance and nested templates are great for this.</p>
 
 <p>The rest is usability, later I might add a tiny ecosystem with drafts and a database, but for now this should be enough.</p>
 
