@@ -1,0 +1,267 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>tsbohc</title>
+  <link href=/static/reset.css rel="stylesheet" type="text/css">
+  <link href=/static/style.css rel="stylesheet" type="text/css">
+  <link href=/static/bw.css rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href=/static/favicon.ico type="image/x-icon" />
+</head>
+
+<body>
+
+  <main>
+    <header>
+      <a href="/"><h1>THE SECRET<br> BITTERNESS<br> OF HONEY CAKE</h1></a>
+    </header>
+    
+
+
+  
+  <article>
+    <h2>
+      <a href="/p/creating-a-static-blog">
+        creating a static blog
+      </a>
+    </h2>
+    <p>Code is like a relationship. It's all about the concept of inputs and outputs. You put something in, you get something out. A static website is a little like that.</p>
+
+<p>What makes it static, is that data lives apart from the html. To accommodate for changes in the data, we have to recompile the whole thing. Thankfully, that's quick and easy to automate.</p>
+
+<p>So, what's our input? It looks something like this:</p>
+
+<pre><code>title: my favourite quote from cat's cradle
+---
+"Peculiar travel suggestions are dancing lessons from god."
+- Kurt Vonnegut
+</code></pre>
+
+<p>Markdown is an in-line formatting language that can be used to quickly create lists, tables, code blocks like the one above, and etc. But, the biggest advantage is that it translates well to html.</p>
+
+<p>So, this marks our first step, parsing and converting the input.</p>
+
+<p>To do that, we have to do two things. First, we'll create templates which will tell the data where to go:</p>
+
+<div class="codehilite"><pre><code><span class="x">{ % block content % }</span>
+<span class="x">  &lt;article&gt;</span>
+<span class="x">    &lt;h2&gt; </span><span class="cp">{{</span> <span class="nv">post.title</span> <span class="cp">}}</span><span class="x"> &lt;/h2&gt;</span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">post.content</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">  &lt;/article&gt;</span>
+<span class="x">{ % endblock % }</span>
+</code></pre></div>
+
+<p>And, of course, write some logic. Python is a good choice, because we don't care about speed and it's highly semantic. I've always liked that trade off.</p>
+
+<div class="codehilite"><pre><code><span class="k">for</span> <span class="n">post_name</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+    <span class="n">post_metadata</span> <span class="o">=</span> <span class="n">posts</span><span class="p">[</span><span class="n">post_name</span><span class="p">]</span><span class="o">.</span><span class="n">metadata</span>
+
+    <span class="n">post_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="n">post_metadata</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">],</span>
+        <span class="s">&#39;content&#39;</span><span class="p">:</span> <span class="n">posts</span><span class="p">[</span><span class="n">post_name</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">post_html</span> <span class="o">=</span> <span class="n">post_template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">post</span><span class="o">=</span><span class="n">post_data</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">post_name</span> <span class="o">+</span> <span class="s">&#39;.html&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">post</span><span class="p">:</span>
+        <span class="n">post</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">post_html</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Here we're going through the posts one by one, parsing their data, converting it, and pushing it through the template.</p>
+
+<p>This produces freshly baked html:</p>
+
+<div class="codehilite"><pre><code><span class="nt">&lt;article&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>my favourite quote from cat&#39;s cradle<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;p&gt;</span>&quot;Peculiar travel suggestions are dancing lessons from god.&quot;<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;p&gt;</span>- Kurt Vonnegut<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/article&gt;</span>
+</code></pre></div>
+
+<p>We've got the structure down, but we're still missing styling. Let's fix that and make things pretty with CSS:</p>
+
+<div class="codehilite"><pre><code><span class="nt">article</span> <span class="p">{</span>
+  <span class="k">font</span><span class="o">:</span> <span class="m">12pt</span><span class="o">/</span><span class="m">1</span><span class="o">.</span><span class="m">8</span> <span class="n">Body</span><span class="o">,</span> <span class="k">serif</span><span class="p">;</span>
+  <span class="k">color</span><span class="o">:</span> <span class="m">#404040</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h2</span> <span class="p">{</span>
+  <span class="k">font-size</span><span class="o">:</span> <span class="m">19pt</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The last step is to write some composition logic which will manage the chunks of data we got above. Inheritance and nested templates are great for this.</p>
+
+<p>The rest is usability, later I might add a tiny ecosystem with drafts and a database, but for now this should be enough.</p>
+
+  </article>
+  <div class="date">Jun, 28</div>
+  <div class="tags">
+    <span>
+      
+
+
+  #<a href="/tag-code.html">code</a>, #<a href="/tag-blog.html">blog</a>
+
+
+
+    </span>
+  </div>
+
+
+  
+  <article>
+    <h2>
+      <a href="/p/a-new-beginning">
+        a new beginning
+      </a>
+    </h2>
+    <p>It dawned on me that I have a tumblr blog which I've been neglecting for a while. And instead of pulling up vim and writing something profound, I thought to myself, "fuck tumblr, I'm gonna move to github pages."</p>
+
+<p>That turned out to be simple enough, but of course I didn't stop there. I thought, "so they have that static website generator, and it looks pretty neat."</p>
+
+<p>But it still wasn't autistic enough for me. And there I was, thinking, "Python's fun to iterate on, I should use that to code my own generator."</p>
+
+<p>The funny thing is, the script itself is &lt; 40 lines of code. Making things pretty and figuring out the templates did take some time, though. Speaking of pretty things and code:</p>
+
+<div class="codehilite"><pre><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">&quot;hello, world!&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Pure stylesheet magic.</p>
+
+<p>Each time I make an edit, the pages are recompiled and served to a local http server with live reload. Whenever I want to update the website, I make a commit and push files to github.</p>
+
+<p>Everything is modular and easily extendable.</p>
+
+  </article>
+  <div class="date">Jun, 27</div>
+  <div class="tags">
+    <span>
+      
+
+
+  #<a href="/tag-code.html">code</a>, #<a href="/tag-blog.html">blog</a>
+
+
+
+    </span>
+  </div>
+
+
+  
+  <article>
+    <h2>
+      <a href="/p/difference">
+        difference
+      </a>
+    </h2>
+    <p>there's a key difference between letting go and convincing yourself not to want. there's a key difference between controlling an emotion and fighting against it. there's a key difference between not feeling and internalizing what you feel</p>
+
+<p>personal integrity cannot be attained by submitting to or crossing swords with one's self. neglect leads to hate and late blooming misery. punishment forms habits, but does not teach</p>
+
+<p>the importance of appearing to be is promoted so heavily, some have forgotten what being is actually like. you must resolve, accept, and remember, it's better to die self-reflecting than participate in a culture of social degradation</p>
+
+  </article>
+  <div class="date">May, 23</div>
+  <div class="tags">
+    <span>
+      
+
+
+  #<a href="/tag-ltafs.html">ltafs</a>
+
+
+
+    </span>
+  </div>
+
+
+  
+  <article>
+    <h2>
+      <a href="/p/cardboard">
+        cardboard
+      </a>
+    </h2>
+    <p>lack of self-awareness is a cosplay of real values. a complete suit of spray painted cardboard armor. it doesn't have to be steel if you make believable, right? except it does</p>
+
+<p>values beg for scrutiny, and scrutiny begs for honesty. for every bit of value you have to pay in effort. the effort to ask yourself questions, to hold yourself accountable, and to answer them truthfully</p>
+
+<p>self-awareness comes from the ability to reverse engineer one's self. why have you felt x? why do you believe in y? why do you value z? the further you descent into self, the more abstract and intangible it becomes. but it's worth it, so worth it</p>
+
+  </article>
+  <div class="date">May, 31</div>
+  <div class="tags">
+    <span>
+      
+
+
+  #<a href="/tag-ltafs.html">ltafs</a>
+
+
+
+    </span>
+  </div>
+
+
+  
+  <article>
+    <h2>
+      <a href="/p/something-naive">
+        something naïve
+      </a>
+    </h2>
+    <p>the common perception of love has become synonymous with the feeling of intense yearning. we're still confusing mania and agape. longing for someone and the fear of rejection are not the substance of love, but the mere side-effects of its manifestation</p>
+
+<p>love expressed through desire is inherently self-seeking, objectifying, possessive, yet culturally accepted. it is no more than a mask concealing egocentricity. what should be frowned upon is romanticised</p>
+
+<p>and why the plethora of unnecessary implications? why isn't love a gift that doesn't beg to be opened? a symbol of pure and selfless acceptance of every aspect of someone's existence? isn't that what it's all about?</p>
+
+  </article>
+  <div class="date">Apr, 10</div>
+  <div class="tags">
+    <span>
+      
+
+
+  #<a href="/tag-ltafs.html">ltafs</a>
+
+
+
+    </span>
+  </div>
+
+
+
+<div id="pagination">
+  <div id="future">
+    
+  </div>
+  <div id="past">
+    
+      <a href="../home-2">past</a> →
+    
+  </div>
+</div>
+
+
+  </main>
+
+  <footer>
+    <img id="marisa" alt src=/static/marisa.png>
+    <p>
+      <p><a href="https://vk.com/id264238136">seancallous@vk</a></p>
+      <p>unapologetically opinionated</p>
+      <a href="/">home</a>,  <a href="/archive">archive</a>, 
+      <!--<a href="https://myanimelist.net/animelist/seancallous?status=7&order=4&order2=0">mal</a>,-->
+      & <img id="heart" src=/static/heart.png width="13" height="12">
+    </p>
+  </footer>
+
+</body>
+</html>
