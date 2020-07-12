@@ -82,18 +82,18 @@ def recompile():
             if past_n - 1 >= math.ceil(len(posts_data) / split_after):
                 past_n = -1
             else:
-                past_n = 'home-' + str(past_n)
+                past_n = '/home/' + str(past_n)
 
             future_n = split_n - 1
             if future_n < 1:
                 future_n = -1
             else:
-                future_n = 'home-' + str(future_n)
+                future_n = '/home/' + str(future_n)
 
 
             temp_html = home_template.render(posts=temp_data, past=past_n, future=future_n)
 
-            create_page('home-' + str(split_n), temp_html)
+            create_page('home/' + str(split_n), temp_html)
 
             temp_data = []
             post_n = 0
