@@ -9,6 +9,11 @@
 }
 
 @font-face {
+  font-family: BodyBold;
+  src: url(librebaskerville-bold.ttf);
+}
+
+@font-face {
   font-family: Title;
   src: url(librebaskerville-bold.ttf);
 }
@@ -18,9 +23,67 @@
   src: url(FiraCode-Medium.ttf);
 }
 
+html, html[data-theme="light"] {
+  --main-background-color: #ffffff;
+  --main-text-color: #404040;
+  --header-text-color: #000;
+  --border-color: #e8e8e8;
+  --highlight-color: #ffefa6;
+  --code-row-1: #ffffff;
+  --code-row-2: #f9f9f9;
+}
+
+html[data-theme="dark"] {
+  --main-background-color: #212226;
+  --main-text-color: #cccccd;
+  --header-text-color: #fefefe;
+  --border-color: #444;
+  --highlight-color: #14161c;
+  --code-row-1: #141414;
+  --code-row-2: #0f0f0f;
+}
+
+/*
+html[data-theme="dark"] {
+  --main-background-color: #242325 url(/static/darkbg.png);
+  --main-text-color: #C4BAAF;
+  --header-text-color: #F2EAE2;
+  --border-color: #353535;
+  --highlight-color: #507ab0;
+}
+*/
+
+@media (prefers-color-scheme: dark) {
+    html {
+      content: "dark";
+    }
+}
+
+em {
+  font-style: italic;
+}
+
+blockquote {
+  /*font-style: italic;*/
+  margin: 17px 25px 17px 25px;
+  border-left: 1px var(--border-color) solid;
+  padding: 0 10px 0 10px;
+}
+
+blockquote p {
+  margin: 0 0 0 0;
+}
+
+strong {
+  font-family: BodyBold;
+  font-style: bold;
+}
+
 html {
   height: 100%;
   box-sizing: border-box;
+  color: var(--main-text-color);
+  background: var(--main-background-color);
 }
 
 body::-webkit-scrollbar {
@@ -37,11 +100,15 @@ body {
   box-sizing: border-box;
   padding: 0 0 230px 0;
   font: 12pt/1.8 Body, serif;
-  color: #404040;
 }
 
 p {
   margin: 0 0 9px 0;
+}
+
+ul {
+  margin: 0 0 9px 40px;
+  padding: 0 35px 0 0;
 }
 
 a {
@@ -51,7 +118,7 @@ a {
 
 #pagination a, .tags a, article a {
   background-position: center 90%;
-  background: linear-gradient(to bottom, transparent 0%, #ffefa6 0) center bottom/100% 30% no-repeat;
+  background: linear-gradient(to bottom, transparent 0%, var(--highlight-color) 0) center bottom/100% 30% no-repeat;
   transition: all 0.1s ease;
 }
 
@@ -74,7 +141,7 @@ a {
 }
 
 .tags span {
-  background: #fff;
+  background: var(--main-background-color);
   padding: 0 5px 0 5px;
 }
 
@@ -82,12 +149,16 @@ h2 {
   font-size: 19pt;
 }
 
+h3 {
+  font-size: 16pt;
+}
+
 article {
   width: 550px;
   float: right;
   padding: 0 0 30px 0;
   margin: 0 0 30px 0;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--border-color);
 }
 
 main {
@@ -104,10 +175,13 @@ header {
   font-size: 45pt;
   line-height: 1;
   text-transform: uppercase;
-  color: #000;
   padding: 0 20px 0 20px;
   margin: 35px -20px 35px -20px;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--border-color);
+}
+
+header a, h2 a {
+  color: var(--header-text-color);
 }
 
 #pagination {
@@ -142,7 +216,7 @@ footer {
 footer #marisa {
   width: 128px;
   height: auto;
-  margin: -64px 0 24px 0;
+  margin: -64px 0 12px 0;
   border-radius: 50%;
   border: 1px solid rgba(0,0,0,0.3);
 }
@@ -157,21 +231,21 @@ pre code {
 }
 
 pre {
-  margin: 25px -20px 33px -20px;
+  margin: 22px -20px 30px -20px;
   padding: 10px 20px 10px 20px;
   white-space: pre-wrap;       /* Since CSS 2.1 */
 
   line-height:22px;
-  background:linear-gradient(180deg,#fff 0,#fff 22px,#f9f9f9 0);
+  background:linear-gradient(180deg,var(--code-row-1) 0,var(--code-row-1) 22px,var(--code-row-2) 0);
   background-size:44px 44px;
   background-origin:content-box;
   background-position: 0 -22px;
   background-repeat: repeat;
 
   border-radius: 0px;
-  border-top: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
+  border-top: 1px solid var(--border-color); /* ddd */
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
   box-shadow:
     /* The top layer shadow */
     0 1px 1px rgba(0,0,0,0.1),
@@ -184,3 +258,4 @@ pre {
     /* The third layer shadow */
     0 20px 1px -11px rgba(0,0,0,0.15);
 }
+

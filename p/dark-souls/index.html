@@ -8,6 +8,13 @@
   <link href=/static/style.css rel="stylesheet" type="text/css">
   <link href=/static/bw.css rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href=/static/favicon.ico type="image/x-icon" />
+
+  <script>
+  const theme = localStorage.getItem('theme');
+  if (theme === "dark") {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  </script>
 </head>
 
 <body>
@@ -64,11 +71,41 @@
     <p>
       <p><a href="https://vk.com/id264238136">seancallous@vk</a></p>
       <p>unapologetically opinionated</p>
-      <a href="/">home</a>,  <a href="/archive">archive</a>, 
+      <a href="/">home</a>,  <a href="/archive">archive</a>, <a href="" onclick="modeSwitcher()">dark</a>
       <!--<a href="https://myanimelist.net/animelist/seancallous?status=7&order=4&order2=0">mal</a>,-->
       & <img id="heart" src=/static/heart.png width="13" height="12">
     </p>
   </footer>
 
 </body>
+  <script>
+  const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
+
+  if (theme === "dark") {
+    document.getElementById("theme-toggle").innerHTML = "Light Mode";
+  } else if (theme === "light") {
+    document.getElementById("theme-toggle").innerHTML = "Dark Mode";
+  } else if  (userPrefers === "dark") {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    window.localStorage.setItem('theme', 'dark');
+    document.getElementById("theme-toggle").innerHTML = "Light Mode";
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    window.localStorage.setItem('theme', 'light');
+    document.getElementById("theme-toggle").innerHTML = "Dark Mode";
+  }
+
+  function modeSwitcher() {
+    let currentMode = document.documentElement.getAttribute('data-theme');
+    if (currentMode === "dark") {
+      document.documentElement.setAttribute('data-theme', 'light');
+      window.localStorage.setItem('theme', 'light');
+      document.getElementById("theme-toggle").innerHTML = "Dark Mode";
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      window.localStorage.setItem('theme', 'dark');
+      document.getElementById("theme-toggle").innerHTML = "Light Mode";
+    }
+  }
+  </script>
 </html>
