@@ -31,16 +31,32 @@ html, html[data-theme="light"] {
   --highlight-color: #ffefa6;
   --code-row-1: #ffffff;
   --code-row-2: #f9f9f9;
+  --code-layer-shadow-0: rgba(0,0,0,0.1);
+  --code-layer-shadow-12: rgba(0,0,0,0.15);
+  --code-layer-1: #f7f7f7;
+  --code-layer-2: #f5f5f5;
+  --main-link-color: #333;
+  --footer-background: #090909;
+  --footer-color: #606060;
+  --footer-link-color: #808080;
 }
 
 html[data-theme="dark"] {
-  --main-background-color: #212226;
-  --main-text-color: #cccccd;
+  --main-background-color: #29272b;
+  --main-text-color: #9991a1;
   --header-text-color: #fefefe;
-  --border-color: #444;
-  --highlight-color: #14161c;
-  --code-row-1: #141414;
-  --code-row-2: #0f0f0f;
+  --border-color: #3f3a42;
+  --highlight-color: #5E548E;
+  --code-row-1: var(--main-background-color);
+  --code-row-2: #201e21;
+  --code-layer-shadow-0: var(--border-color);
+  --code-layer-shadow-12: var(--border-color);
+  --code-layer-1: #262428;
+  --code-layer-2: #242225;
+  --main-link-color: #fefefe;
+  --footer-background: #171618;
+  --footer-color: #59545e;
+  --footer-link-color: #9991a1;
 }
 
 /*
@@ -79,6 +95,11 @@ strong {
   font-style: bold;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 html {
   height: 100%;
   box-sizing: border-box;
@@ -113,7 +134,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: #333;
+  color: var(--main-link-color);
 }
 
 #pagination a, .tags a, article a {
@@ -190,13 +211,15 @@ header a, h2 a {
   float: right;
 }
 
+#pagination div {
+  width: 50%;
+}
+
 #pagination #future {
-  width: 225px;
   float: left;
 }
 
 #pagination #past {
-  width: 225px;
   text-align: right;
   float: right;
 }
@@ -208,9 +231,9 @@ footer {
   height: 200px;
   position: absolute;
   bottom: 0;
-  background: #090909;
+  background: var(--footer-background);
   text-align: center;
-  color: #606060;
+  color: var(--footer-color);
 }
 
 footer #marisa {
@@ -221,8 +244,13 @@ footer #marisa {
   border: 1px solid rgba(0,0,0,0.3);
 }
 
-footer a {color:#808080;}
-footer a:hover, #footer a:active {color: #eee;}
+footer a {
+  color: var(--footer-link-color);
+}
+
+footer a:hover, #footer a:active {
+  color: #fefefe;
+}
 
 pre code {
   display: inline-block;
@@ -248,14 +276,39 @@ pre {
   border-right: 1px solid var(--border-color);
   box-shadow:
     /* The top layer shadow */
-    0 1px 1px rgba(0,0,0,0.1),
+    0 1px 1px var(--code-layer-shadow-0),
     /* The second layer */
-    0 10px 0 -6px #f7f7f7,
+    0 10px 0 -6px var(--code-layer-1),
     /* The second layer shadow */
-    0 10px 1px -5px rgba(0,0,0,0.15),
+    0 10px 1px -5px var(--code-layer-shadow-12),
      /* The third layer */
-    0 20px 0 -12px #f5f5f5,
+    0 20px 0 -12px var(--code-layer-2),
     /* The third layer shadow */
-    0 20px 1px -11px rgba(0,0,0,0.15);
+    0 20px 1px -11px var(--code-layer-shadow-12);
+}
+
+
+@media screen and (max-width: 769px) {
+  main {
+    margin-left: 0px;
+    width: 90%;
+  }
+
+  header {
+    width: 90%;
+  }
+
+  article, #pagination, .tags {
+    width: 90%;
+  }
+
+  footer {
+    width: 100%;
+  }
+
+  .date {
+    display: none;
+  }
+
 }
 
