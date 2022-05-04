@@ -1,0 +1,381 @@
+:root {
+  --background: #f6f6f6;
+  --foreground: #111111;
+  --foreground-mild: #666666;
+  --hyperlink: #000000;
+  --highlight: #e7e7e7;
+  --highlight-dark: #a3a3a3;
+  --highlight-mild: #eeeeee;
+  --small: 1rem;
+}
+
+@font-face {
+  font-family: Regular;
+  src: url('font/iosevka-custom-regular-light.woff2');
+  unicode-range: U+000-5FF;
+}
+
+@font-face {
+  font-family: Semibold;
+  src: url('font/iosevka-custom-semibold-light.woff2');
+  unicode-range: U+000-5FF;
+}
+
+/* toki pona begin */
+
+@font-face {
+  font-family: linja-pona;
+  src: url('font/linja-pona-4.2.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.linja-pona {
+  line-height: 1.4;
+  font-family: linja-pona;
+  font-size: 1.6rem;
+  font-feature-settings: "liga" 1, "clig" 1, "calt" 1, "kern" 1, "mark" 1;
+  text-rendering: optimizeLegibility;
+  padding-bottom: 0;
+  padding-top: 0;
+  vertical-align: top;
+}
+
+pre code.linja-pona {
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+/* toki pona end */
+
+
+* {
+  padding: 0;
+}
+
+body {
+  font: 1.06rem/1.55 Regular, system-ui, sans-serif;
+  max-width: 38rem;
+  padding-left: calc(100vw - 100% + 1rem); /* prevent the scrollbar from shifting content */
+  padding-right: 1rem;
+  margin: max(2rem, 4vw) auto max(2rem, 4vw) auto;
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+th {
+  font-family: Semibold, sans-serif;
+  text-align: left;
+}
+
+section, #meta {
+  margin-top: 1rem;
+}
+
+time {
+  color: var(--foreground-mild);
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 400;
+  font-family: Semibold, sans-serif;
+  margin: 2rem 0 1rem 0;
+}
+
+h1 {
+  margin-top: max(1.5rem, 2.5vw);
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+h1 + h2 {
+  margin-top: 0;
+}
+
+/*h1:before {
+  font-family: Regular, sans-serif;
+  color: var(--highlight-dark);
+  content: "# ";
+}
+
+h2:before {
+  font-family: Regular, sans-serif;
+  color: var(--highlight-dark);
+  content: "## ";
+}*/
+
+strong, em {
+  font-style: normal;
+  font-weight: normal;
+}
+
+strong {
+  font-family: Semibold, sans-serif;
+}
+
+/* strong:before, strong:after { */
+/*   color: var(--highlight-dark); */
+/* } */
+/**/
+/* strong:before { */
+/*   content:"「"; */
+/* } */
+/**/
+/* strong:after { */
+/*   content:"」"; */
+/* } */
+
+p:after {
+  color: var(--highlight-dark);
+  content:"¬";
+}
+
+li p:after {
+  content: "";
+}
+
+/* blockquote */
+
+blockquote {
+  position: relative;
+  padding-left: 1em;
+  margin: 0 0;
+}
+
+blockquote:before {
+  height: 100%;
+  overflow-y: hidden;
+  color: var(--highlight-dark);
+  content: ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>";
+  white-space: pre-wrap;
+  position: absolute;
+  pointer-events: none;
+  margin-left: -1em;
+}
+
+/* code blocks */
+
+code {
+  background: var(--highlight);
+  padding:   0.11rem  0.2rem  0.11rem  0.2rem;
+}
+
+em {
+  background: var(--highlight);
+  padding: 0.07em 0.2em 0.07em 0.2em;
+  margin: 0 -0.2em;
+}
+
+pre code {
+  background: none;
+  font-family: Regular;
+  white-space: pre-wrap;
+}
+
+pre {
+  white-space: pre-wrap !important;
+  background: var(--highlight-mild);
+  width: calc(50% + 50vw - 1rem);
+  margin:  1rem -1rem 1rem calc(50% - 50vw);
+  padding: 1rem 1rem 1rem calc(50vw - 50%);
+}
+
+/* lists */
+
+ul {
+  list-style-type: none;
+}
+
+ol {
+  list-style-position: inside;
+}
+
+ul li {
+  margin-left: 1rem;
+  text-indent: -1rem;
+}
+
+li + li, li ul {
+  margin-top: 0.5rem;
+}
+
+.TOC li, .TOC ul {
+  margin-top: 0rem;
+}
+
+ul li::before {
+  content: "* ";
+  color: var(--highlight-dark);
+}
+
+ul li ul li::before {
+  content: "- ";
+  color: var(--highlight-dark);
+}
+
+ul li ul li ul li::before {
+  content: "+ ";
+  color: var(--highlight-dark);
+}
+
+
+/* li { */
+  /* margin-left: -1rem; */
+/* } */
+
+/* li { */
+/*   padding-left: 0rem; */
+/*   text-indent: -1rem; */
+/* } */
+
+/* li + li { */
+/*   margin-top: 0.5em; */
+/* } */
+
+/* li:before { */
+/*   color: var(--highlight-dark); */
+/*   content: "*"; */
+/*   width: 0.5rem; */
+/*   /* padding-right: 0.5rem; */
+/* } */
+/**/
+/* li ul li:before { */
+/*   color: var(--highlight-dark); */
+/*   content: "-"; */
+/*   width: 0.5rem; */
+/*   /* padding-right: 0.5rem; */
+/* } */
+
+/* hr */
+
+hr {
+  border: 0;
+  text-align: left;
+}
+
+hr:before {
+  content: "---";
+  color: var(--highlight-dark);
+}
+
+/* links */
+
+/*
+nav a, section a, #meta a {
+  font-family: Semibold, sans-serif;
+}
+*/
+
+a {
+  color: var(--hyperlink);
+  font-family: Semibold, sans-serif;
+  text-decoration: none;
+}
+
+/* search box */
+
+#s {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  width: 3em;
+  font: 1.06rem/1 Semibold, sans-serif;
+}
+
+#s:not(:placeholder-shown), #s:focus {
+  width: 8em;
+  padding: 0 1ch;
+}
+
+#s:placeholder-shown:not(:focus) {
+  cursor: pointer;
+}
+
+#s:placeholder-shown:focus::placeholder {
+  font-family: Regular;
+  color: var(--highlight-dark);
+}
+
+*::placeholder { color: var(--hyperlink); }
+
+a, #s {
+  background-image: linear-gradient(var(--highlight), var(--highlight));
+  background-size: 100% 0.5rem;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  transition: 0.15s ease;
+}
+
+a:hover, #s:hover, #s:focus, #s:not(:placeholder-shown) {
+  background-size: 100% 100%;
+}
+
+table {
+  border-collapse: collapse;
+  margin: var(--small) auto;
+  /* display: inline-block; */
+  /* min-width: 60%; */
+  /* width: 100%; */
+}
+
+th, td {
+  /* border: 2px solid none; */
+  padding: 0rem 1rem;
+}
+
+tr:nth-child(odd) td {
+  background: var(--highlight-mild)
+}
+
+thead tr {
+  background: none !important;
+}
+
+th:empty, td:empty {
+  padding: 0rem;
+  width: 0.5rem;
+  background: none !important;
+}
+
+figure img {
+  max-width: 38rem;
+  width: 100%;
+}
+
+figure {
+  margin: var(--small) 0;
+}
+
+.footnotes li p {
+  display: inline;
+}
+
+.footnote, a.reversefootnote {
+  background-image: none;
+  color: #DA5A57;
+}
+
+a.reversefootnote{
+  margin-left: -0.5rem;
+}
+
+.footnote sup {
+  /* background-image: linear-gradient(var(--highlight), var(--highlight)); */
+  /* background-size: 100% 0.25rem; */
+  color: #DA5A57;
+  text-decoration: underline;
+  text-decoration-color: #DA5A57;
+  font-family: Semibold, sans-serif;
+  padding: 0 0.125rem;
+  vertical-align: super;
+}
+
+* ::selection {
+  background-color: #DA5A57;
+  color: white;
+}

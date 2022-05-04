@@ -1,0 +1,185 @@
+#!/bin/bash
+
+# TODO nvim -> $EDITOR
+# f:meta date is useless, apart from fzf
+# the ${1##*/} is ugly, move all that to the loops
+# could potentially compare change date of raw.md to templates and index.html to see if a rebuild is needed
+
+# -- files --
+
+f:new() { # create new post
+  timestamp="$(date +%s)"
+  mkdir -p "p/$timestamp"
+  echo -e "<!---\nname: \npeek: \ntags: draft \ndate: $timestamp\n---->" > "p/$timestamp/raw.md" # tripple dash: https://stackoverflow.com/a/4829998
+}
+
+f:meta(){ # in post $1 with the rest of $@ as keys, preserves order
+  local kvpair_re='(.*):[[:space:]](.*)'
+  declare -A meta
+  while read -r line; do
+    [[ $line == "---->" ]] && break
+    if [[ $line =~ $kvpair_re ]]; then
+      meta+=(["${BASH_REMATCH[1]}"]="${BASH_REMATCH[2]}")
+    fi
+  done < "p/$1/raw.md"
+  local out
+  for key in "$@"; do
+    out+="${meta["$key"]}	"
+  done
+  echo "${out::-1}"
+}
+
+f:edit() { # select post in fzf to nvim
+  raw="$(for p in "p/"*; do
+    f:meta "${p##*/}" date name peek tags
+  done | awk -F "	" '{ print $1" "$2" "$3" ("$4")" }' | fzf)"
+  [[ -n "$raw" ]] && nvim "$(awk -F " " '{ print "p/"$1"/raw.md" }' <<< "$raw")"
+}
+
+# -- markdown --
+
+minify-css() {
+  if [ static/style.css -nt static/style.min.css ]; then
+    echo "updating style.min.css"
+    cssnano < static/style.css > static/style.min.css
+  fi
+}
+
+tidy-html() {
+  local opts=(
+    -quiet
+    -indent
+    -wrap 10000
+    --tidy-mark no
+  )
+  tidy "${opts[@]}" <<< "$*"
+}
+
+render() {
+  local opts=(
+    # -f +fencedcode
+    # -f -smarty
+    # -f +definitionlist
+    # -f +dlextra
+    # -html5
+    # -x fenced-code-blocks
+    # -x tables
+    --nosmart
+  )
+  multimarkdown "${opts[@]}" <<< "$*"
+}
+
+# -- template --
+
+t:body() {
+  echo -n "
+    <!doctype html>
+    <html lang='en'>
+      <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel='shortcut icon' href='/static/favicon.ico' type='image/x-icon'>
+        <link href='/static/style.min.css' rel='stylesheet' type='text/css'>
+        <title>${1}</title>
+      </head>
+      <body>
+        <nav>
+          <a href='/' class='bold'>home</a>
+          <a href='/about' class='bold'>about</a>
+          <!--<a href='/thoughts'>thoughts</a>-->
+          <input type='text' id='s' placeholder='search' />
+          <script type='module' src='/static/search.js'></script>
+        </nav>
+        <span style='white-space: nowrap;'>the secret bitterness of honey cake</span>
+        ${2}
+      </body>
+    </html>
+  "
+}
+
+t:tags() {
+  read -r -a tags <<< "$(f:meta "$1" tags)"
+  local out
+  for tag in "${tags[@]}"; do
+    out+="#<a href='/?query=%23$tag' class='bold'>$tag</a> "
+  done
+  echo -n "${out::-1}"
+}
+
+t:date() {
+  echo -n "
+    <time datetime='$(date '+%Y-%m-%d %H:%M' -d "@$1")'>
+      $(date '+%d%m%y' -d "@$1")
+    </time>
+  "
+}
+
+# <span style='display: none;'>$(t:tags "$1")</span>
+
+t:card() {
+  echo -n "
+    <section>
+      $(t:date "$1")
+      <a href='/p/$1' class='bold'>$(f:meta "$1" name)</a>
+      <div>$(f:meta "$1" peek)</div>
+      <span style='display: none;'>$(t:tags "$1")</span>
+    </section>
+  "
+}
+
+t:post() {
+  local name ; name="$(f:meta "$1" name)"
+  t:body "$name" "
+    <main>
+      <article>
+        <h1>$name</h1>
+        $(render "$(<"p/$1/raw.md")")
+        <div id='meta'>$(t:date "$1") $(t:tags "$1")</div>
+      </article>
+    </main>
+  "
+}
+
+update() {
+  echo "t:body index"
+  tidy-html "$(t:body "tsbohc" "
+    <main>
+      <h1>sitelen mi</h1>
+      $(while read -r p; do
+          p=${p/\/raw.md/}
+          p=${p##*/}
+          [[ "$(f:meta "$p" tags)" == *"draft"* ]] || t:card "$p"
+        done < <(find p -name '*.md' -printf '%p\n' | sort -r))
+    </main>
+  ")" > index.html
+
+  echo "t:body about"
+  tidy-html "$(t:body "about" "$(render "$(<about/raw.md)")")" > "about/index.html"
+
+  for p in "p/"*; do
+    p=${p##*/}
+    echo "t:post $p"
+    tidy-html "$(t:post "$p")" > "p/$p/index.html"
+  done
+
+  minify-css
+
+  echo
+  ls -lh static/style.min.css
+  ls -lh honeycake
+  echo
+}
+
+# -- main --
+
+subcmd=$1 ; shift
+case $subcmd in
+  -n|new)  f:new ;;
+  -e|edit) f:edit ;;
+  -s|serve)
+    http-server -s &
+    find . -type f | entr ./honeycake -u
+    ;;
+  -u|update) update ;;
+  *) echo "static website generator" ;;
+esac

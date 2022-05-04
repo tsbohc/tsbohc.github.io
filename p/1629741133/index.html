@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='shortcut icon' href='/static/favicon.ico' type='image/x-icon'>
+  <link href='/static/style.min.css' rel='stylesheet' type='text/css'>
+  <title>blagsh</title>
+</head>
+<body>
+  <nav>
+    <a href='/' class='bold'>home</a> <a href='/about' class='bold'>about</a> <!--<a href='/thoughts'>thoughts</a>-->
+     <input type='text' id='s' placeholder='search'> 
+    <script type='module' src='/static/search.js'></script>
+  </nav><span style='white-space: nowrap;'>the secret bitterness of honey cake</span>
+  <main>
+    <article>
+      <h1>blagsh</h1><!--
+name: blagsh
+peek: Portmanteaus and why I'm not allowed to make websites anymore.
+tags: blog bash
+date: 1629741133
+-->
+      <p>What tools would satisfy my minimalist heart? I sneered at python. I let jinja go. I pondered for a while. The next night, the fated words <em>parameter expansion in bash</em> came to me in my sleep.</p>
+      <pre><code class="bash">t:post() {
+  local name ; name="$(f:meta "$1" name)"
+  t:body "$name" "
+    &lt;main&gt;
+      &lt;article&gt;
+        &lt;h1&gt;$name&lt;/h1&gt;
+        $(render "$(&lt;"p/$1/raw.md")")
+        &lt;div id='meta'&gt;$(t:date "$1") $(t:tags "$1")&lt;/div&gt;
+      &lt;/article&gt;
+    &lt;/main&gt;"
+}
+</code></pre>
+      <p>Here's a short bash poem, depicting you, the reader:</p>
+      <pre><code class="bash">:|| echo "if i could speak i'd grumble"
+</code></pre>
+      <h2 id="design">design</h2>
+      <p>Visually, I wanted the blog to feel distinctly text-centric. CSS-wise, that entailed creating a monochrome pallette and abusing pseudo-elements to capture that raw markdown vibe.</p>
+      <p>Despite the templating code being the bastard child of bash and JSX, I quite like it. Having direct access to system commands is nice.</p>
+      <pre><code>t:date() {
+  echo -n "
+    &lt;time datetime='$(date '+%Y-%m-%d %H:%M' -d "@$1")'&gt;
+      $(date '+%d%m%y' -d "@$1")
+    &lt;/time&gt;"
+}
+</code></pre>
+      <p>Around the back, I ended up embedding metadata into markdown files as comments and parsing it with regex. As far as frugal solutions go, I think it's the best one.</p>
+      <pre><code>├── 1633785019
+│   ├── index.html
+│   └── raw.md
+└── 1633890762
+    ├── index.html
+    └── raw.md
+</code></pre>
+      <p>The UNIX timestamp makes for a good permalink, and I don't mind being a little cryptic. To make finding the right post easier, I'm extracting the metadata and feeding it into fzf.</p>
+      <pre><code>f:edit() { # select post in fzf to nvim
+  raw="$(for p in "p/"*; do
+    f:meta "${p##*/}" date name peek tags
+  done | awk -F "^I" '{ print $1" "$2" "$3" ("$4")" }' | fzf)"
+  [[ -n "$raw" ]] &amp;& nvim "$(awk -F " " '{ print "p/"$1"/raw.md" }' &lt;&lt;&lt; "$raw")"
+}
+</code></pre>
+      <p>There is a subcommand in the script that launches <em>http-server</em> and recompiles the html on change via <em>entr</em>.</p>
+      <p>With something like this, there really isn't much to talk about. If you're curious, I'll let the <a href="https://github.com/tsbohc/tsbohc.github.io/blob/master/honeycake">code</a> speak for itself.</p>
+      <div id='meta'>
+        <time datetime='2021-08-23 20:52'>230821</time> #<a href='/?query=%23blog' class='bold'>blog</a> #<a href='/?query=%23bash' class='bold'>bash</a>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
