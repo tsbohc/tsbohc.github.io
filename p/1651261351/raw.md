@@ -309,8 +309,9 @@ I like *toki pona*. I want more people to learn about it. I want to see it grow.
 
 **Source code.**
 
+The paper is a work in progress. The most recent rendered *.pdf* can be viewed [here](https://docs.google.com/viewer?url=https://github.com/tsbohc/lipu-sona/raw/master/latex/lipu.pdf). The direct link to a download is [here](https://github.com/tsbohc/lipu-sona/raw/master/latex/lipu.pdf).
+
 The [tsbohc/lipu-sona](https://github.com/tsbohc/lipu-sona) github repository includes:
 
 - The model in the binary format. The scripts that were used to prepare, normalise, and clean the training data.
-- The paper and the bibliography in LaTeX[^[LaTeX](https://www.latex-project.org/) is a typesetting system; it includes features designed for the production of technical and scientific documentation.] and in the form of a compiled PDF.
-- The corpus is unavailable due to privacy concerns.
+- The paper and the bibliography in LaTeX[^[LaTeX](https://www.latex-project.org/) is a typesetting system; it includes features designed for the production of technical and scientific documentation.], as well as a rendered *.pdf*.

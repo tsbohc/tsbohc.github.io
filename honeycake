@@ -158,8 +158,10 @@ update() {
 
   for p in "p/"*; do
     p=${p##*/}
-    echo "t:post $p"
-    tidy-html "$(t:post "$p")" > "p/$p/index.html"
+    if [ "p/$p/raw.md" -nt "p/$p/index.html" ]; then
+      echo "t:post $p"
+      tidy-html "$(t:post "$p")" > "p/$p/index.html"
+    fi
   done
 
   minify-css
