@@ -243,7 +243,7 @@ date: 1651628474
       </table>
       <p>Now <em>telo nasa</em> can be represented as a set of numbers: [0.16, 0.16, 0.33, 0.33, 0.16, 0.16]. This is its <em>word vector</em>, a numerical description of a word relative to every other word in a corpus. Every single word in a corpus can have one such vector.</p>
       <p>Because we are operating on vectors, the principles of linear algebra can be applied to them. We will use <em>cosine similarity</em><a href="#fn:3" id="fnref:3" title="see footnote" class="footnote"><sup>3</sup></a> to determine the degree of similarity between two vectors, that is, to quantify their semantic similarity.</p>
-      <p>Right now, our corpus is very specialised, but what if we had more contexts featuring more words?</p>
+      <p>Right now, our corpus is highly specialised, but what if we had more contexts featuring more words?</p>
       <p>What if instead of 4 contexts, we had <em>a quarter of a million</em>?</p>
       <h1 id="constructedlanguages">constructed languages</h1>
       <p>J. R. R. Tolkien wrote books so that his languages had somewhere to live and thrive. Since then, many people have created their own languages. One of them is jan Sonja.</p>
@@ -490,40 +490,39 @@ date: 1651628474
       <p>There was no VSM of <em>toki pona</em> prior to this research. There is no larger corpus of <em>toki pona</em>. There is no other dated corpus at all.</p>
       <p>With the access to the time of writing of each sentence, changes in the vocabulary can be tracked from 2010 up to the present.</p>
       <h1 id="formalities">formalities</h1>
-      <p><strong>Title.</strong> TOKI PONA: DATA-DRIVEN VOCABULARY ANALYSIS.</p>
+      <p><strong>Title.</strong> TOKI PONA: DISTRIBUTIONAL APPROACH TO SEMANTIC ANALYSIS OF A CONSTRUCTED LANGUAGE.</p>
       <p><strong>Subject.</strong> Semantic analysis and classification of vocabulary.</p>
       <p><strong>Object.</strong> <em>toki pona</em>, a constructed language.</p>
+      <p><strong>Problem.</strong> The publicly available dictionaries do not fully reflect how the language is spoken today.</p>
       <p><strong>Goal.</strong> Perform the semantic analysis and classification of the vocabulary of the language.</p>
-      <ul>
-        <li><em>Problem.</em> Vocabulary cannot be analysed based on the existing resources. The available dictionaries of the language do not contain enough information.</li>
-        <li><em>Solution.</em> Use natural language processing techniques to construct a semantic model of the language and base the analysis on it.</li>
-      </ul>
       <p><strong>Methodology.</strong> Distributional semantics and natural language processing, namely language modelling (word embedding).</p>
       <p><strong>Objectives.</strong></p>
       <ul>
+        <li>Define distributional semantics and distributional models.</li>
+        <li>Discuss modern implementations of distributional models.</li>
         <li>Define and classify constructed languages.</li>
         <li>Describe <em>toki pona</em>, its philosophy, history, and unique features.</li>
-        <li>Define distributional semantics.</li>
-        <li>Define modern approaches to NLP applicable to the research.</li>
         <li>Obtain the necessary corpora.</li>
+        <li>Normalise the input data.</li>
         <li>Construct a vector space model of the language.</li>
         <li>Make observations on the model.</li>
-        <li>Classify the vocabulary based on the observed semantic relationships between the words of the vocabulary.</li>
+        <li>Classify the words of the vocabulary based on the observed semantic relationships between them.</li>
       </ul>
       <p><strong>Relevance.</strong></p>
       <p>Constructed language are gaining popularity. With the rise of the internet, these languages now have a space where they can be created, discussed, learnt, taught, and spoken. Despite this, the only constructed language that has seen much representation in scientific writing is Esperanto.</p>
       <p>The existing dictionaries of Toki Pona could benefit from the findings of this research. This data can also be used as an aid in teaching the language to new speakers.</p>
-      <p>The Vector Space Model of Toki Pona can find further use in information retrieval, topic modelling, text prediction, sentiment analysis, and many other areas.</p>
+      <p>The vector space model of Toki Pona developed in the course of this research can find further use in machine translation, topic modelling, text prediction, sentiment analysis, and many other areas.</p>
       <p><strong>Personal reasons.</strong></p>
       <p>I like <em>toki pona</em>. I want more people to learn about it. I want to see it grow.</p>
       <p><strong>Source code.</strong></p>
-      <p>The paper is a work in progress. The most recent rendered <em>.pdf</em> can be viewed <a href="https://docs.google.com/viewer?url=https://github.com/tsbohc/lipu-sona/raw/master/latex/lipu.pdf">here</a>. The direct link to a download is <a href="https://github.com/tsbohc/lipu-sona/raw/master/latex/lipu.pdf">here</a>.</p>
+      <p>The paper is a work in progress. The most recent rendered <em>.pdf</em> can be viewed <a href="https://docs.google.com/viewer?url=https://github.com/tsbohc/lipu-sona/raw/master/latex/lipu.pdf">here</a> or <a href="https://github.com/tsbohc/lipu-sona/blob/master/latex/lipu.pdf">here</a>. The direct link to the download is <a href="https://github.com/tsbohc/lipu-sona/raw/master/latex/lipu.pdf">here</a>.</p>
       <p>The <a href="https://github.com/tsbohc/lipu-sona">tsbohc/lipu-sona</a> github repository includes:</p>
       <ul>
         <li>The model in the binary format. The scripts that were used to prepare, normalise, and clean the training data.</li>
         <li>The paper and the bibliography in LaTeX<a href="#fn:7" id="fnref:7" title="see footnote" class="footnote"><sup>7</sup></a>, as well as a rendered <em>.pdf</em>.
         </li>
       </ul>
+      <p><!-- <iframe src="http://docs.google.com/gview?url=https://github.com/tsbohc/lipu-sona/raw/master/latex/lipu.pdf&embedded=true" style="width:718px; height:700px;" frameborder="0"></iframe> --></p>
       <div class="footnotes">
         <hr>
         <ol>

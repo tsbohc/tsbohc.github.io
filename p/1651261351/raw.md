@@ -95,7 +95,7 @@ Now *telo nasa* can be represented as a set of numbers: [0.16, 0.16, 0.33, 0.33,
 
 Because we are operating on vectors, the principles of linear algebra can be applied to them. We will use *cosine similarity*[^Read more about *cosine similarity* on [wikipedia](https://en.wikipedia.org/wiki/Cosine_similarity).] to determine the degree of similarity between two vectors, that is, to quantify their semantic similarity.
 
-Right now, our corpus is very specialised, but what if we had more contexts featuring more words?
+Right now, our corpus is highly specialised, but what if we had more contexts featuring more words?
 
 What if instead of 4 contexts, we had *a quarter of a million*?
 
@@ -271,29 +271,29 @@ With the access to the time of writing of each sentence, changes in the vocabula
 
 # formalities
 
-**Title.** TOKI PONA: DATA-DRIVEN VOCABULARY ANALYSIS.
+**Title.** TOKI PONA: DISTRIBUTIONAL APPROACH TO SEMANTIC ANALYSIS OF A CONSTRUCTED LANGUAGE.
 
 **Subject.** Semantic analysis and classification of vocabulary.
 
 **Object.** *toki pona*, a constructed language.
 
-**Goal.** Perform the semantic analysis and classification of the vocabulary of the language.
+**Problem.** The publicly available dictionaries do not fully reflect how the language is spoken today.
 
-- *Problem.* Vocabulary cannot be analysed based on the existing resources. The available dictionaries of the language do not contain enough information.
-- *Solution.* Use natural language processing techniques to construct a semantic model of the language and base the analysis on it.
+**Goal.** Perform the semantic analysis and classification of the vocabulary of the language.
 
 **Methodology.** Distributional semantics and natural language processing, namely language modelling (word embedding).
 
 **Objectives.**
 
+* Define distributional semantics and distributional models.
+* Discuss modern implementations of distributional models.
 * Define and classify constructed languages.
 * Describe *toki pona*, its philosophy, history, and unique features.
-* Define distributional semantics.
-* Define modern approaches to NLP applicable to the research.
 * Obtain the necessary corpora.
+* Normalise the input data.
 * Construct a vector space model of the language.
 * Make observations on the model.
-* Classify the vocabulary based on the observed semantic relationships between the words of the vocabulary.
+* Classify the words of the vocabulary based on the observed semantic relationships between them.
 
 **Relevance.**
 
@@ -301,7 +301,7 @@ Constructed language are gaining popularity. With the rise of the internet, thes
 
 The existing dictionaries of Toki Pona could benefit from the findings of this research. This data can also be used as an aid in teaching the language to new speakers.
 
-The Vector Space Model of Toki Pona can find further use in information retrieval, topic modelling, text prediction, sentiment analysis, and many other areas.
+The vector space model of Toki Pona developed in the course of this research can find further use in machine translation, topic modelling, text prediction, sentiment analysis, and many other areas.
 
 **Personal reasons.**
 
@@ -309,9 +309,11 @@ I like *toki pona*. I want more people to learn about it. I want to see it grow.
 
 **Source code.**
 
-The paper is a work in progress. The most recent rendered *.pdf* can be viewed [here](https://docs.google.com/viewer?url=https://github.com/tsbohc/lipu-sona/raw/master/latex/lipu.pdf). The direct link to a download is [here](https://github.com/tsbohc/lipu-sona/raw/master/latex/lipu.pdf).
+The paper is a work in progress. The most recent rendered *.pdf* can be viewed [here](https://docs.google.com/viewer?url=https://github.com/tsbohc/lipu-sona/raw/master/latex/lipu.pdf) or [here](https://github.com/tsbohc/lipu-sona/blob/master/latex/lipu.pdf). The direct link to the download is [here](https://github.com/tsbohc/lipu-sona/raw/master/latex/lipu.pdf).
 
 The [tsbohc/lipu-sona](https://github.com/tsbohc/lipu-sona) github repository includes:
 
 - The model in the binary format. The scripts that were used to prepare, normalise, and clean the training data.
 - The paper and the bibliography in LaTeX[^[LaTeX](https://www.latex-project.org/) is a typesetting system; it includes features designed for the production of technical and scientific documentation.], as well as a rendered *.pdf*.
+
+<!-- <iframe src="http://docs.google.com/gview?url=https://github.com/tsbohc/lipu-sona/raw/master/latex/lipu.pdf&embedded=true" style="width:718px; height:700px;" frameborder="0"></iframe> -->
