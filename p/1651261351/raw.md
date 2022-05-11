@@ -57,13 +57,13 @@ Let us consider a few words that could replace *telo nasa* in these 4 contexts. 
 
 Because *wine* is the best fit for these contexts, we can assume that *telo nasa* shares some of its properties.
 
-Now, what if it was possible to make a computer do the same thing? That is, infer meaning from context just like we did.
+Now, what if it was possible to make a computer do the same thing? That is, to infer meaning from context just like we have.
 
 ## word embedding
 
 Let us write a program that will make a computer look through the words in a corpus, one by one. It will also count how many times each of the other words appears in the context of the current word.
 
-For now, let us look at the contexts from the previous example. We will only consider *telo nasa* and its contexts. We will only concern ourselves with content words that are less general.
+For now, let us look at the contexts from the previous example. We will only consider *telo nasa* and its surrounding content words that are less general.
 
 | |telo nasa
 |-| :-:
