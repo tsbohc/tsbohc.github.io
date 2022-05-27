@@ -10,14 +10,14 @@
 f:new() { # create new post
   timestamp="$(date +%s)"
   mkdir -p "p/$timestamp"
-  echo -e "<!---\nname: \npeek: \ntags: draft \ndate: $timestamp\n---->" > "p/$timestamp/raw.md" # tripple dash: https://stackoverflow.com/a/4829998
+  echo -e "<!--\nname: \npeek: \ntags: draft \ndate: $timestamp\n-->" > "p/$timestamp/raw.md" # tripple dash: https://stackoverflow.com/a/4829998
 }
 
 f:meta(){ # in post $1 with the rest of $@ as keys, preserves order
   local kvpair_re='(.*):[[:space:]](.*)'
   declare -A meta
   while read -r line; do
-    [[ $line == "---->" ]] && break
+    [[ $line == "-->" ]] && break
     if [[ $line =~ $kvpair_re ]]; then
       meta+=(["${BASH_REMATCH[1]}"]="${BASH_REMATCH[2]}")
     fi
