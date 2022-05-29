@@ -20,9 +20,8 @@
         font-style: normal;
       }
       .linja-pona {
-        line-height: 1.4;
         font-family: linja-pona !important;
-        font-size: 3.6rem;
+        font-size: 3.1rem;
         font-feature-settings: "liga" 1, "clig" 1, "calt" 1, "kern" 1, "mark" 1;
         text-rendering: optimizeLegibility;
         padding-bottom: 0;
@@ -121,7 +120,7 @@
           </section>
 
           <section>
-            <h4>toki pona</h4>
+            <h3>toki pona</h3>
             <ol>
               <li>minimalistic</li>
               <li>bottom-up</li>
@@ -149,20 +148,27 @@
           <section>
             <div class="container">
               <div class="col">
+                <span class='linja-pona'>pimeja</span>
                 <em><strong>pimeja</strong> (adj.)</em><br>black, dark, unlit
               </div>
               <div class="col">
+                <span class='linja-pona'>walo</span>
                 <em><strong>walo</strong> (adj.)</em><br>white, light, pale
               </div>
             </div>
           </section>
 
           <section>
-            <p>
+            <p class='linja-pona'>
+              <span class='fragment semi-fade-out linja-pona' data-fragment-index="1">pilin mi li pona </span>
+              lon tenpo pimeja
+              <span class='fragment semi-fade-out linja-pona' data-fragment-index="1"> ni</span>
+            </p>
+            <p><em>
               <span class='fragment semi-fade-out' data-fragment-index="1">pilin mi li pona </span>
               lon tenpo pimeja
               <span class='fragment semi-fade-out' data-fragment-index="1"> ni</span>
-            </p>
+            </em></p>
           </section>
 
           <section>
@@ -177,6 +183,7 @@
             <p>semantic analysis of vocabulary</p>
           </section>
         </section>
+
 
         <section>
           <section>
@@ -194,11 +201,11 @@
           <!-- in other words, similarity in meaning results in similarity in linguistic distribution -->
 
           <section>
+            <h3>corpus</h3>
             <table>
             <thead>
             </thead>
             <tbody>
-              <h3>corpus</h3>
               <tr>
                 <td>sentences</td>
                 <td>270 903</td>
@@ -216,9 +223,9 @@
           </section>
 
           <section>
-            <p style="text-align: left;">
+            <p style="text-align: left;"><em>
               tenpo pimeja
-              <span class='fragment semi-fade-out' data-fragment-index="1"> la, mi pilin pona</span>. </span>
+              <span class='fragment semi-fade-out' data-fragment-index="1"> la, mi pilin pona. </span>
               kule pimeja
               <span class='fragment semi-fade-out' data-fragment-index="1"> li pona tawa mi. </span>
               tenpo pimeja
@@ -230,7 +237,7 @@
               pimeja<span class='fragment semi-fade-out' data-fragment-index="1">. soweli</span>
               walo pimeja
               <span class='fragment semi-fade-out' data-fragment-index="1"> o! <...></span>
-            </p>
+            </em></p>
           </section>
 
           <section>
@@ -238,15 +245,15 @@
             <thead>
               <tr>
                 <th></th>
-                <th>tenpo</th>
-                <th>kule</th>
+                <th style='text-align:center'>tenpo</th>
+                <th style='text-align:center'>kule</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>pimeja</td>
-                <td>10432</td>
-                <td>9785</td>
+                <td style='text-align:right'>10432</td>
+                <td style='text-align:right'>9785</td>
               </tr>
             </tbody>
             </table>
@@ -257,8 +264,8 @@
             <thead>
               <tr>
                 <th></th>
-                <th>tenpo</th>
-                <th>kule</th>
+                <th style='text-align:center'>tenpo</th>
+                <th style='text-align:center'>kule</th>
               </tr>
             </thead>
             <tbody>
@@ -276,8 +283,8 @@
             <thead>
               <tr>
                 <th></th>
-                <th>tenpo</th>
-                <th>kule</th>
+                <th style='text-align:center'>tenpo</th>
+                <th style='text-align:center'>kule</th>
               </tr>
             </thead>
             <tbody>
@@ -369,6 +376,7 @@
           <section>
             <h3>cosine similarity</h3>
             <p>a measurement of similarity between two vectors of any dimensionality, {-1 .. +1}</p>
+            <p>cs(x, y) = x . y / ||x|| * ||y||</p>
           </section>
           <!-- measured by the cosine of the angle between two vectors and determines whether two vectors are pointing in roughly the same direction -->
 
@@ -479,7 +487,6 @@
 
           <section>
             <h3>dimensionality reduction</h3>
-            <p><em>or what if the Earth existed in 120 dimensions</em></p>
           </section>
 
           <section>
@@ -723,6 +730,248 @@
             <p>distributional semantics, natural language processing, word embedding, dimensionality reduction...</p>
           </section>
         </section>
+       
+        <section>
+          <section class='linja-pona'>
+            <span class='myfadeout linja-pona'>toki pona la</span>
+            nasin kulupu 
+            <span class='myfadeout linja-pona'>pi kama sona e kon nimi lon toki jan pali</span>
+          </section>
+
+          <section>
+            <p class='linja-pona'>«sina ken kama sona e nimi kepeken kulupu ona a»</p>
+            <p><span class='linja-pona'>tan jan [_lupa_uta_pini_esun_tomo]<br>lon</span> 1957</p>
+          </section>
+
+          <section>
+            <p class='linja-pona'>nanpa pi nimi ale</p>
+            <table>
+            <thead>
+            </thead>
+            <tbody>
+              <tr>
+                <td class='linja-pona'>kulupu nimi</td>
+                <td>270 903</td>
+              </tr>
+              <tr>
+                <td class='linja-pona'>nimi</td>
+                <td>2 239 370</td>
+              </tr>
+            </tbody>
+            </table>
+          </section>
+
+          <section>
+            <p class='linja-pona'>nasin pali pi sona lili</p>
+          </section>
+
+          <section>
+            <p style="text-align: left;" class='linja-pona'>
+              tenpo pimeja
+              <span class='fragment semi-fade-out linja-pona' data-fragment-index="1"> la mi pilin pona. </span>
+              kule pimeja
+              <span class='fragment semi-fade-out linja-pona' data-fragment-index="1"> li pona tawa mi. </span>
+              tenpo pimeja
+              <span class='fragment semi-fade-out linja-pona' data-fragment-index="1"> pini la mi lape ike lili. </span>
+              kule pimeja
+              <span class='fragment semi-fade-out linja-pona' data-fragment-index="1"> li sama </span>
+              kule walo
+              <span class='fragment semi-fade-out linja-pona' data-fragment-index="1"> ala. len mute mi li </span>
+              pimeja<span class='fragment semi-fade-out linja-pona' data-fragment-index="1">. soweli</span>
+              walo pimeja
+              <span class='fragment semi-fade-out linja-pona' data-fragment-index="1"> o! ...</span>
+            </p>
+          </section>
+
+          <section>
+            <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th style='text-align:center' class='linja-pona'>tenpo</th>
+                <th style='text-align:center' class='linja-pona'>kule</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class='linja-pona'>pimeja</td>
+                <td>10432</td>
+                <td>9785</td>
+              </tr>
+            </tbody>
+            </table>
+          </section>
+
+          <section>
+            <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th style='text-align:center' class='linja-pona'>tenpo</th>
+                <th style='text-align:center' class='linja-pona'>kule</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class='linja-pona'>pimeja</td>
+                <td style="text-align: right">0.51</td>
+                <td style="text-align: right">0.49</td>
+              </tr>
+            </tbody>
+            </table>
+          </section>
+
+          <section>
+            <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th style='text-align:center' class='linja-pona'>tenpo</th>
+                <th style='text-align:center' class='linja-pona'>kule</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class='linja-pona'>pimeja</td>
+                <td style="text-align: right">0.51</td>
+                <td style="text-align: right">0.49</td>
+              </tr>
+              <tr>
+                <td class='linja-pona'>walo</td>
+                <td style="text-align: right">0.08</td>
+                <td style="text-align: right">0.92</td>
+              </tr>
+              <tr>
+                <td class='linja-pona'>jelo</td>
+                <td style="text-align: right">0.11</td>
+                <td style="text-align: right">0.89</td>
+              </tr>
+              <tr>
+                <td class='linja-pona'>laso</td>
+                <td style="text-align: right">0.07</td>
+                <td style="text-align: right">0.93</td>
+              </tr>
+              <tr>
+                <td class='linja-pona'>loje</td>
+                <td style="text-align: right">0.09</td>
+                <td style="text-align: right">0.91</td>
+              </tr>
+            </tbody>
+            </table>
+          </section>
+
+          <section>
+            <p class='linja-pona'>kama sona pi ilo nanpa</p>
+          </section>
+
+          <section>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th style="text-align: center" class='linja-pona'>pimeja</th>
+                  <th style="text-align: center" class='linja-pona'>tenpo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style='font-weight:500'>1</td>
+                  <td style="text-align: right">-1.1144181e+00</td>
+                  <td style="text-align: right">-1.63356221e+00</td>
+                </tr>
+                <tr>
+                  <td style='font-weight:500'>2</td>
+                  <td style="text-align: right">3.5352123e-01</td>
+                  <td style="text-align: right">2.04552099e-01</td>
+                </tr>
+                <tr>
+                  <td style='font-weight:500'>3</td>
+                  <td style="text-align: right">9.6316403e-01</td>
+                  <td style="text-align: right">-6.56251550e-01</td>
+                </tr>
+                <tr>
+                  <td style='font-weight:500'>4</td>
+                  <td style="text-align: right">-1.6279966e+00</td>
+                  <td style="text-align: right">1.22791338e+00</td>
+                </tr>
+                <tr>
+                  <td>...</td>
+                  <td style="text-align: center">...</td>
+                  <td style="text-align: center">...</td>
+                </tr>
+                <tr>
+                  <td style='font-weight:500'>120</td>
+                  <td style="text-align: right">1.2613379e+00</td>
+                  <td style="text-align: right">-5.05781531e-01</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <p class='linja-pona'>sama nanpa pi suli sike</p>
+            <p><span class='linja-pona'>ona li pana e nanpa la nanpa ni li pana e sama nanpa pi kulupu nanpa tu<br> ona li lon</span> {-1 .. +1}</p>
+            <p><span class='linja-pona'>sama nanpa</span>(x, y) = x . y / ||x|| * ||y||</p>
+            <p class>
+          </section>
+
+          <section>
+            <p class='linja-pona'>nimi mute li sama suli nimi utala</p>
+            <table>
+              <colgroup>
+                <col>
+                <col style="text-align:center;">
+                <col>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th class='linja-pona'>nimi</th>
+                  <th class='linja-pona' style="text-align:center;">sama nanpa</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class='linja-pona'>lawa</td>
+                  <td style="text-align:center;">0.551</td>
+                </tr>
+                <tr>
+                  <td class='linja-pona'>moli</td>
+                  <td style="text-align:center;">0.536</td>
+                </tr>
+                <tr>
+                  <td class='linja-pona'>jan</td>
+                  <td style="text-align:center;">0.427</td>
+                </tr>
+                <tr>
+                  <td class='linja-pona'>wawa</td>
+                  <td style="text-align:center;">0.404</td>
+                </tr>
+                <tr>
+                  <td class='linja-pona'>pakala</td>
+                  <td style="text-align:center;">0.397</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <p class='linja-pona'>o lili e supa pi kulupu nanpa nimi</p>
+          </section>
+
+          <section>
+            <p class='linja-pona'>nasin pi nanpa ala li kulupu e nimi poka</p>
+            <!-- <img src="pca.png"> -->
+            <ol>
+              <li><span class='linja-pona'>poka nanpa li suli mute</span></li>
+              <li><span class='linja-pona'>weka nanpa en lon nanpa li suli ala</span></li>
+            </ol>
+          </section>
+
+          <section>
+            <p class='linja-pona'>nasin sona</p>
+            <p class='linja-pona'>nasin kulupu pi kon nimi. nasin pali pi toki kasi. kulupu nanpa nimi. lili pi supa mute...</p>
+          </section>
+        </section> </section>
 
 
         <section>
