@@ -11,6 +11,33 @@
     <link rel="stylesheet" href="dist/theme/white.css">
 
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+      @font-face {
+        font-family: linja-pona;
+        src: url('linja-pona-4.2.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+      }
+      .linja-pona {
+        line-height: 1.4;
+        font-family: linja-pona !important;
+        font-size: 3.6rem;
+        font-feature-settings: "liga" 1, "clig" 1, "calt" 1, "kern" 1, "mark" 1;
+        text-rendering: optimizeLegibility;
+        padding-bottom: 0;
+        padding-top: 0;
+        vertical-align: top;
+      }
+      strong, b, th {
+        font-weight: 500 !important;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: 500 !important;
+      }
+      * {
+        font-family: 'IBM Plex Sans', sans-serif !important;
+      }
       .container{
           display: flex;
       }
@@ -21,6 +48,9 @@
       .myfadeout{
         opacity: 0.5;
       }
+      .red {
+        color: #DA5A57;
+      }
     </style>
 
   </head>
@@ -28,7 +58,7 @@
     <div class="reveal">
       <div class="slides">
 
-        <section>
+        <section class='linja-pona'>
           o kama pona tawa toki sona mi
         </section>
 
@@ -91,6 +121,17 @@
           </section>
 
           <section>
+            <h4>toki pona</h4>
+            <ol>
+              <li>minimalistic</li>
+              <li>bottom-up</li>
+              <li>focuses on universal phenomena</li>
+              <li>offers a path of semantic reduction</li>
+              <li>resistant to lexicalisation</li>
+            </ol>
+          </section>
+
+          <section>
             <h3>object</h3>
             <p>toki pona, a constructed language with the core vocabulary of 120 words</p>
           </section>
@@ -118,17 +159,17 @@
 
           <section>
             <p>
-              <span class='fragment semi-fade-out' data-fragment-index="1">pilin mi li pona lon </span>
-              tenpo pimeja
+              <span class='fragment semi-fade-out' data-fragment-index="1">pilin mi li pona </span>
+              lon tenpo pimeja
               <span class='fragment semi-fade-out' data-fragment-index="1"> ni</span>
             </p>
           </section>
 
           <section>
-            <ul>
-              <li>how much <em>tenpo</em> and <em>kule</em> is in <em>pimeja</em>?</li>
-              <li>is the <em>kule</em> of <em>tenpo</em> limited to <em>pimeja</em>?</li>
-            </ul>
+            <ol>
+              <li>how much <em><b>tenpo</b></em> and <em><b>kule</b></em> is in <em><b>pimeja</b></em>?</li>
+              <li>is the <em><b>kule</b></em> of <em><b>tenpo</b></em> limited to <em><b>pimeja</b></em>?</li>
+            </ol>
           </section>
 
           <section>
@@ -148,7 +189,7 @@
 
           <section>
             <em>You shall know a word by the company it keeps!</em>
-            <p>-- John Rupert Firth, 1957</p>
+            <p>— John Rupert Firth, 1957</p>
           </section>
           <!-- in other words, similarity in meaning results in similarity in linguistic distribution -->
 
@@ -157,7 +198,7 @@
             <thead>
             </thead>
             <tbody>
-              <h4>corpus</h4>
+              <h3>corpus</h3>
               <tr>
                 <td>sentences</td>
                 <td>270 903</td>
@@ -171,11 +212,13 @@
           </section>
 
           <section>
+            <h3>NAÏVE APPROACH</h3>
+          </section>
+
+          <section>
             <p style="text-align: left;">
               tenpo pimeja
-              <span class='fragment semi-fade-out' data-fragment-index="1"> la, mi pilin pona. ona li kama lon </span>
-              tenpo pimeja
-              <span class='fragment semi-fade-out' data-fragment-index="1"> ni. </span>
+              <span class='fragment semi-fade-out' data-fragment-index="1"> la, mi pilin pona</span>. </span>
               kule pimeja
               <span class='fragment semi-fade-out' data-fragment-index="1"> li pona tawa mi. </span>
               tenpo pimeja
@@ -224,6 +267,25 @@
                 <td style="text-align: right">0.51</td>
                 <td style="text-align: right">0.49</td>
               </tr>
+            </tbody>
+            </table>
+          </section>
+
+          <section>
+            <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>tenpo</th>
+                <th>kule</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>pimeja</td>
+                <td style="text-align: right">0.51</td>
+                <td style="text-align: right">0.49</td>
+              </tr>
               <tr>
                 <td>walo</td>
                 <td style="text-align: right">0.08</td>
@@ -247,7 +309,15 @@
             </tbody>
             </table>
           </section>
-        
+
+          <section>
+            <img src='./plot2d.png'>
+          </section>
+
+          <section>
+            <h3>MACHINE LEARNING</h3>
+          </section>
+
           <section>
             <img src='./word2vec-cbow.png'>
           </section>
@@ -263,22 +333,22 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
+                  <td style='font-weight:500'>1</td>
                   <td style="text-align: right">-1.1144181e+00</td>
                   <td style="text-align: right">-1.63356221e+00</td>
                 </tr>
                 <tr>
-                  <td>2</td>
+                  <td style='font-weight:500'>2</td>
                   <td style="text-align: right">3.5352123e-01</td>
                   <td style="text-align: right">2.04552099e-01</td>
                 </tr>
                 <tr>
-                  <td>3</td>
+                  <td style='font-weight:500'>3</td>
                   <td style="text-align: right">9.6316403e-01</td>
                   <td style="text-align: right">-6.56251550e-01</td>
                 </tr>
                 <tr>
-                  <td>4</td>
+                  <td style='font-weight:500'>4</td>
                   <td style="text-align: right">-1.6279966e+00</td>
                   <td style="text-align: right">1.22791338e+00</td>
                 </tr>
@@ -288,7 +358,7 @@
                   <td style="text-align: center">...</td>
                 </tr>
                 <tr>
-                  <td>120</td>
+                  <td style='font-weight:500'>120</td>
                   <td style="text-align: right">1.2613379e+00</td>
                   <td style="text-align: right">-5.05781531e-01</td>
                 </tr>
@@ -297,76 +367,128 @@
           </section>
 
           <section>
-            <h4>cosine similarity</h4>
-            a measurement of similarity between two vectors of any dimensionality
+            <h3>cosine similarity</h3>
+            <p>a measurement of similarity between two vectors of any dimensionality, {-1 .. +1}</p>
           </section>
           <!-- measured by the cosine of the angle between two vectors and determines whether two vectors are pointing in roughly the same direction -->
 
           <section>
+            <p>Most related to <em><strong>utala</strong></em> (battle, challenge, struggle)</p>
             <table>
-            <thead>
-              <tr>
-                <th></th>
-                <th>tenpo</th>
-                <th>kule</th>
-                <th>moku</th>
-                <th>kili</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>pimeja</td>
-                <td style="text-align: right">0.24</td>
-                <td style="text-align: right">0.24</td>
-                <td style="text-align: right">0.41</td>
-                <td style="text-align: right">0.24</td>
-              </tr>
-              <tr>
-                <td>walo</td>
-                <td style="text-align: right">-0.03</td>
-                <td style="text-align: right">0.50</td>
-                <td style="text-align: right">0.44</td>
-                <td style="text-align: right">0.51</td>
-              </tr>
-              <tr>
-                <td>jelo</td>
-                <td style="text-align: right">-0.11</td>
-                <td style="text-align: right">0.56</td>
-                <td style="text-align: right">0.57</td>
-                <td style="text-align: right">0.76</td>
-              </tr>
-              <tr>
-                <td>laso</td>
-                <td style="text-align: right">-0.06</td>
-                <td style="text-align: right">0.76</td>
-                <td style="text-align: right">0.17</td>
-                <td style="text-align: right">0.53</td>
-              </tr>
-              <tr>
-                <td>loje</td>
-                <td style="text-align: right">-0.07</td>
-                <td style="text-align: right">0.52</td>
-                <td style="text-align: right">0.51</td>
-                <td style="text-align: right">0.63</td>
-              </tr>
-              <tr>
-                <td>kasi</td>
-                <td style="text-align: right">-0.11</td>
-                <td style="text-align: right">0.51</td>
-                <td style="text-align: right">0.45</td>
-                <td style="text-align: right">0.69</td>
-              </tr>
-            </tbody>
+              <colgroup>
+                <col>
+                <col style="text-align:center;">
+                <col>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>word</th>
+                  <th style="text-align:center;">cs</th>
+                  <th>definition</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lawa</td>
+                  <td style="text-align:center;">0.551</td>
+                  <td>head, control, rule</td>
+                </tr>
+                <tr>
+                  <td>moli</td>
+                  <td style="text-align:center;">0.536</td>
+                  <td>death, murder</td>
+                </tr>
+                <tr>
+                  <td>jan</td>
+                  <td style="text-align:center;">0.427</td>
+                  <td>person, people</td>
+                </tr>
+                <tr>
+                  <td>wawa</td>
+                  <td style="text-align:center;">0.404</td>
+                  <td>power, strength</td>
+                </tr>
+                <tr>
+                  <td>pakala</td>
+                  <td style="text-align:center;">0.397</td>
+                  <td>break, damage</td>
+                </tr>
+              </tbody>
             </table>
           </section>
 
+          <!-- <section> -->
+          <!--   <table> -->
+          <!--   <colgroup> -->
+          <!--   </colgroup> -->
+          <!--   <thead> -->
+          <!--     <tr> -->
+          <!--       <th style='text-align:center'><em>cs</em></th> -->
+          <!--       <th style='text-align:center'>tenpo</th> -->
+          <!--       <th style='text-align:center'>kule</th> -->
+          <!--       <th style='text-align:center'>moku</th> -->
+          <!--       <th style='text-align:center'>kili</th> -->
+          <!--     </tr> -->
+          <!--   </thead> -->
+          <!--   <tbody> -->
+          <!--     <tr> -->
+          <!--       <td style='font-weight:500'>pimeja</td> -->
+          <!--       <td style="text-align: right">0.24</td> -->
+          <!--       <td style="text-align: right">0.24</td> -->
+          <!--       <td style="text-align: right">0.41</td> -->
+          <!--       <td style="text-align: right">0.24</td> -->
+          <!--     </tr> -->
+          <!--     <tr> -->
+          <!--       <td style='font-weight:500'>walo</td> -->
+          <!--       <td style="text-align: right">-0.03</td> -->
+          <!--       <td style="text-align: right">0.50</td> -->
+          <!--       <td style="text-align: right">0.44</td> -->
+          <!--       <td style="text-align: right">0.51</td> -->
+          <!--     </tr> -->
+          <!--     <tr> -->
+          <!--       <td style='font-weight:500'>jelo</td> -->
+          <!--       <td style="text-align: right">-0.11</td> -->
+          <!--       <td style="text-align: right">0.56</td> -->
+          <!--       <td style="text-align: right">0.57</td> -->
+          <!--       <td style="text-align: right">0.76</td> -->
+          <!--     </tr> -->
+          <!--     <tr> -->
+          <!--       <td style='font-weight:500'>laso</td> -->
+          <!--       <td style="text-align: right">-0.06</td> -->
+          <!--       <td style="text-align: right">0.76</td> -->
+          <!--       <td style="text-align: right">0.17</td> -->
+          <!--       <td style="text-align: right">0.53</td> -->
+          <!--     </tr> -->
+          <!--     <tr> -->
+          <!--       <td style='font-weight:500'>loje</td> -->
+          <!--       <td style="text-align: right">-0.07</td> -->
+          <!--       <td style="text-align: right">0.52</td> -->
+          <!--       <td style="text-align: right">0.51</td> -->
+          <!--       <td style="text-align: right">0.63</td> -->
+          <!--     </tr> -->
+          <!--     <tr> -->
+          <!--       <td style='font-weight:500'>kasi</td> -->
+          <!--       <td style="text-align: right">-0.11</td> -->
+          <!--       <td style="text-align: right">0.51</td> -->
+          <!--       <td style="text-align: right">0.45</td> -->
+          <!--       <td style="text-align: right">0.69</td> -->
+          <!--     </tr> -->
+          <!--   </tbody> -->
+          <!--   </table> -->
+          <!-- </section> -->
+
           <section>
-            <h4>t-distributed stochastic neighbor embedding</h4>
+            <h3>dimensionality reduction</h3>
+            <p><em>or what if the Earth existed in 120 dimensions</em></p>
+          </section>
+
+          <section>
+            <h3>t-distributed stochastic neighbor embedding</h3>
             <!-- <img src="pca.png"> -->
-            <ul>
+            <ol>
+              <li>proximity is the primary metric</li>
               <li>distance and position are irrelevant</li>
-              <li>close proximity is highly valued</li>
-            </ul>
+            </ol>
           </section>
 
           <!-- <section> -->

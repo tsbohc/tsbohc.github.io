@@ -265,7 +265,7 @@ hr:before {
 /* links */
 
 /*
-nav a, section a, #meta a {
+a, section a, #meta a {
   font-family: Semibold, sans-serif;
 }
 */
@@ -275,6 +275,19 @@ a {
   font-family: Semibold, sans-serif;
   text-decoration: none;
 }
+
+a, #s {
+  background-image: linear-gradient(var(--highlight), var(--highlight));
+  background-size: 100% 0.5rem;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  transition: 0.15s ease;
+}
+
+a:hover, a:hover, #s:hover, #s:focus, #s:not(:placeholder-shown) {
+  background-size: 100% 100%;
+}
+
 
 /* search box */
 
@@ -302,18 +315,6 @@ a {
 }
 
 *::placeholder { color: var(--hyperlink); }
-
-a, #s {
-  background-image: linear-gradient(var(--highlight), var(--highlight));
-  background-size: 100% 0.5rem;
-  background-position: bottom left;
-  background-repeat: no-repeat;
-  transition: 0.15s ease;
-}
-
-a:hover, #s:hover, #s:focus, #s:not(:placeholder-shown) {
-  background-size: 100% 100%;
-}
 
 table {
   border-collapse: collapse;
