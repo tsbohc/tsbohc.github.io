@@ -165,7 +165,9 @@ code {
 }
 
 em {
-  background: var(--highlight);
+  /* background: var(--highlight); */
+  /* color: #ff625e; */
+  /* background-color: #faebeb; */
   padding: 0.07em 0.2em 0.07em 0.2em;
   margin: 0 -0.2em;
 }
@@ -265,7 +267,7 @@ hr:before {
 /* links */
 
 /*
-a, section a, #meta a {
+nav a, section a, #meta a {
   font-family: Semibold, sans-serif;
 }
 */
@@ -275,19 +277,6 @@ a {
   font-family: Semibold, sans-serif;
   text-decoration: none;
 }
-
-a, #s {
-  background-image: linear-gradient(var(--highlight), var(--highlight));
-  background-size: 100% 0.5rem;
-  background-position: bottom left;
-  background-repeat: no-repeat;
-  transition: 0.15s ease;
-}
-
-a:hover, a:hover, #s:hover, #s:focus, #s:not(:placeholder-shown) {
-  background-size: 100% 100%;
-}
-
 
 /* search box */
 
@@ -316,6 +305,18 @@ a:hover, a:hover, #s:hover, #s:focus, #s:not(:placeholder-shown) {
 
 *::placeholder { color: var(--hyperlink); }
 
+a, #s {
+  background-image: linear-gradient(var(--highlight), var(--highlight));
+  background-size: 100% 0.5rem;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  transition: 0.15s ease;
+}
+
+a:hover, #s:hover, #s:focus, #s:not(:placeholder-shown) {
+  background-size: 100% 100%;
+}
+
 table {
   border-collapse: collapse;
   margin: var(--small) auto;
@@ -326,7 +327,7 @@ table {
 
 th, td {
   /* border: 2px solid none; */
-  padding: 0rem 1rem;
+  padding: 0rem 0.5574rem;
 }
 
 tr:nth-child(odd) td {
@@ -379,4 +380,12 @@ a.reversefootnote{
 * ::selection {
   background-color: #DA5A57;
   color: white;
+}
+
+.full-width, .full-width > * {
+  position: relative;
+  left: 50%;
+  margin-left: -47.5vw;
+  max-width: 95vw;
+  width: 95vw;
 }

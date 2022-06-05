@@ -15,15 +15,11 @@ I studied for 145 hours over 30 days. I managed to attain a vocabulary of around
 
 - I studied grammar first.
 
-When I felt somewhat comfortable with pronunciation and orthography, I moved on to grammar.
-
 Later on, I found the language much easier to parse. I knew where to look for the verb in subjunctive clauses, I could separate modal particles from the rest of the sentence.
 
-- I focused on comprehensible input that was just out of reach.
+- I focused on comprehensible input.
 
-I favoured input that contained a lot of visual information or appealed to my interests.
-
-The knowledge of the grammar eased me into reading, while reading imporved my understanding of the grammar.
+I favoured input that contained a lot of visual information or appealed to my interests. The knowledge of the grammar eased me into reading, while reading imporved my understanding of the grammar.
 
 - I studied vocabulary in context and in order of frequency.
 
@@ -31,9 +27,38 @@ I focused on understanding complete sentences instead of memorising individual w
 
 I avoided flashcards. When learning high frequency vocabulary, mindful exposure to the language is spaced repetition in and of itself.
 
-- I restructured information to make it easier to remember.
+- I condensed information into tables.
 
 One of the most effective ways of learning something is to break the topic down to simple parts and condense it. I made a lot of tables.
+<!---->
+<!--  class='full-width' -->
+<!-- <div markdown='1'> -->
+<!---->
+<!-- | m | f | n | p | 1s   | 2s | -->
+<!-- | - | - | - | - | -    | -  | -->
+<!-- | n | e | s | e ||| -->
+<!-- | r | e | s | e ||| -->
+<!-- | m | r | m | n ||| -->
+<!-- | s | r | s | r ||| -->
+<!-- | n | e | s | e |ich   |du|       -->
+<!-- | r | e | s | e |mich  |dich|     -->
+<!-- | m | r | m | n |mir   |dir|      -->
+<!-- | r | r | r | r |meiner|deiner|   -->
+<!---->
+<!---->
+<!-- | m | f | n | p | -->
+<!-- | - | - | - | - | -->
+<!-- | n | e | s | e | -->
+<!-- | r | e | s | e | -->
+<!-- | m | r | m | n | -->
+<!---->
+<!-- </div> -->
+
+
+
+
+
+
 
 <!--
 Adjective declension can be summarised as follows:
