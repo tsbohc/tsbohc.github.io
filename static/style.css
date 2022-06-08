@@ -165,7 +165,7 @@ code {
 }
 
 em {
-  /* background: var(--highlight); */
+  background: var(--highlight);
   /* color: #ff625e; */
   /* background-color: #faebeb; */
   padding: 0.07em 0.2em 0.07em 0.2em;
