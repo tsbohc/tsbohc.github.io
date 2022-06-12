@@ -1,5 +1,5 @@
 <!--
-name: 3d6 weather
+name: sensible weather
 peek: When you don't want to think about cloud density.
 tags: homebrew dnd
 date: 1650739382
