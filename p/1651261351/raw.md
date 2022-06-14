@@ -1,14 +1,14 @@
 <!--
-name: lipu pi wile sona ale
-peek: none
-tags: draft
+name: toki pona vsm
+peek: Distributional semantics, conlangs, and the meaning of life.
+tags: tokipona languages
 date: 1651628474
 -->
 
 This document is meant to serve as an informal introduction to the subject of word embedding in the context of my paper.
 
-<!-- And also my supervisor accusing me of being unable to explain my research "in simple words". -->
-<!-- So, it's written like a children's book. -->
+<!-- also, my supervisor accusing me of being unable to explain my research "in simple words". -->
+<!-- so yeh, it's written like a children's book. -->
 
 ## table of contents
 
@@ -23,8 +23,6 @@ This document is meant to serve as an informal introduction to the subject of wo
 # distributional semantics
 
 In a 1957 publication[^[A Synopsis of Linguistic Theory](https://cs.brown.edu/courses/csci2952d/readings/lecture1-firth.pdf) (1957) by J. R. Firth, p.11], J. R. Firth wrote:
-
-<!-- In a 1957 [publication](https://cs.brown.edu/courses/csci2952d/readings/lecture1-firth.pdf) (p.11), J. R. Firth wrote: -->
 
 > The placing of a text as a constituent in a context of situation contributes to the statement of meaning since situations are set up to recognise use. *You shall know a word by the company it keeps!*
 
@@ -112,10 +110,6 @@ The words *telo nasa* mean *weird liquid*, which is a common way of referring to
 *toki pona* is an uninflected language. Basic sentences have the following structure:
 
 > [context] la [subject] li [predicate] e [d.o.] lon [prep.phrase]
-
-<!-- The vocabulary of toki pona consists of content verbs, grammtical particles, prepositions, and preverbs. Modifiers follow content words. Any content word can be a verb and any verb can be transitive. -->
-
-<!-- #### example sentence -->
 
 Example sentence in *sitelen pona*, the writing system of *toki pona*:
 
@@ -258,52 +252,3 @@ In contrast, *kasi* (plant) is closely related to the rest of the colours. This 
 ## argumentation
 
 This research aims to analyse and classify the vocabulary of *toki pona* based on the actual usage patterns of the language via the methodology discussed previously.
-
-Observations like the ones above cannot be made based on the publicly available dictionaries of the language, nor any other resource. They cannot be made without studying how the language is spoken. The VSM provides us with this data.
-
-<!-- # formalities -->
-<!---->
-<!-- **Title.** TOKI PONA: DISTRIBUTIONAL APPROACH TO SEMANTIC ANALYSIS OF A CONSTRUCTED LANGUAGE. -->
-<!---->
-<!-- **Subject.** Semantic analysis and classification of vocabulary. -->
-<!---->
-<!-- **Object.** *toki pona*, a constructed language. -->
-<!---->
-<!-- **Problem.** The publicly available dictionaries do not fully reflect how the language is spoken today. -->
-<!---->
-<!-- **Goal.** Perform the semantic analysis and classification of the vocabulary of the language. -->
-<!---->
-<!-- **Methodology.** Distributional semantics and natural language processing, namely language modelling (word embedding). -->
-<!---->
-<!-- **Objectives.** -->
-<!---->
-<!-- * Define distributional semantics and distributional models. -->
-<!-- * Discuss modern implementations of distributional models. -->
-<!-- * Define and classify constructed languages. -->
-<!-- * Describe *toki pona*, its philosophy, history, and unique features. -->
-<!-- * Obtain the necessary corpora. -->
-<!-- * Normalise the input data. -->
-<!-- * Construct a vector space model of the language. -->
-<!-- * Make observations on the model. -->
-<!-- * Classify the words of the vocabulary based on the observed semantic relationships between them. -->
-<!---->
-<!-- **Relevance.** -->
-<!---->
-<!-- Constructed language are gaining popularity. With the rise of the internet, these languages now have a space where they can be created, discussed, learnt, taught, and spoken. Despite this, the only constructed language that has seen much representation in scientific writing is Esperanto. -->
-<!---->
-<!-- The existing dictionaries of Toki Pona could benefit from the findings of this research. This data can also be used as an aid in teaching the language to new speakers. -->
-<!---->
-<!-- The vector space model of Toki Pona developed in the course of this research can find further use in machine translation, topic modelling, text prediction, sentiment analysis, and many other areas. -->
-<!---->
-<!-- **Personal reasons.** -->
-<!---->
-<!-- I like *toki pona*. I want more people to learn about it. I want to see it grow. -->
-<!---->
-<!-- **Source code.** -->
-<!---->
-<!-- The paper is a work in progress. The most recent rendered *.pdf* can be viewed [here](https://docs.google.com/viewer?url=https://github.com/tsbohc/lipu-sona/raw/master/latex/lipu.pdf) or [here](https://github.com/tsbohc/lipu-sona/blob/master/latex/lipu.pdf). The direct link to the download is [here](https://github.com/tsbohc/lipu-sona/raw/master/latex/lipu.pdf). -->
-<!---->
-<!-- The [tsbohc/lipu-sona](https://github.com/tsbohc/lipu-sona) github repository includes: -->
-<!---->
-<!-- - The model in the binary format. The scripts that were used to prepare, normalise, and clean the training data. -->
-<!-- - The paper and the bibliography in LaTeX[^[LaTeX](https://www.latex-project.org/) is a typesetting system; it includes features designed for the production of technical and scientific documentation.], as well as a rendered *.pdf*. -->
