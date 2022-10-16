@@ -1,6 +1,6 @@
 <!--
 name: toki pona vsm
-peek: An elevator pitch for my thesis.
+peek: An elevator pitch for a thesis.
 tags: tokipona languages
 date: 1651628474
 -->
