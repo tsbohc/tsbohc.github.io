@@ -41,7 +41,8 @@ f:edit() { # select post in fzf to nvim
 minify-css() {
   if [ static/style.css -nt static/style.min.css ]; then
     echo "updating style.min.css"
-    cssnano < static/style.css > static/style.min.css
+    # cssnano < static/style.css > static/style.min.css
+    cat static/style.css > static/style.min.css
   fi
 }
 
@@ -52,7 +53,8 @@ tidy-html() {
     -wrap 10000
     --tidy-mark no
   )
-  tidy "${opts[@]}" <<< "$*"
+  # tidy "${opts[@]}" <<< "$*"
+  echo "$*"
 }
 
 render() {
@@ -66,7 +68,7 @@ render() {
     # -x tables
     --nosmart
   )
-  multimarkdown "${opts[@]}" <<< "$*"
+  pandoc --lua-filter=pandoc/extable.lua --from markdown-smart-fancy_lists+pipe_tables+all_symbols_escapable+raw_html+inline_notes+fenced_divs --to html <<< "$*"
 }
 
 # -- template --
@@ -85,7 +87,6 @@ t:body() {
       <body>
         <nav>
           <a href='/' class='bold'>home</a>
-          <a href='/about' class='bold'>about</a>
           <!--<a href='/thoughts'>thoughts</a>-->
           <input type='text' id='s' placeholder='search' />
           <script type='module' src='/static/search.js'></script>
@@ -158,10 +159,10 @@ update() {
 
   for p in "p/"*; do
     p=${p##*/}
-    if [ "p/$p/raw.md" -nt "p/$p/index.html" ]; then
+    # if [ "p/$p/raw.md" -nt "p/$p/index.html" ]; then
       echo "t:post $p"
       tidy-html "$(t:post "$p")" > "p/$p/index.html"
-    fi
+    # fi
   done
 
   minify-css
@@ -179,7 +180,7 @@ case $subcmd in
   -n|new)  f:new ;;
   -e|edit) f:edit ;;
   -s|serve)
-    http-server -s &
+    python -m http.server 8000 &
     find . -type f | entr ./honeycake -u
     ;;
   -u|update) update ;;

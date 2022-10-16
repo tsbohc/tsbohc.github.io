@@ -19,6 +19,10 @@ Let the dice decide.
 | 6     | clear         | none |
 
 
+Precipitation here is simply stuff in the air. It could be rain in the valley, snow in the mountains, sand in the desert, or ash near a volcano.
+
+Temperature doesn't have enough of an impact to bother with it, while wind is a great way to add insult to injury.
+
 | d6   | change |
 | :--: | - |
 | 1      | more precipitation |
@@ -27,9 +31,5 @@ Let the dice decide.
 | 4      | no change |
 | 5      | weaker wind |
 | 6      | less precipitation |
-
-Precipitation here is simply stuff in the air. It could be rain in the valley, snow in the mountains, sand in the desert, or ash near a volcano.
-
-Temperature doesn't have enough of an impact to bother with it, while wind is a great way to add insult to injury.
 
 Every once in a while, roll 1-3 d6s to change the weather. In rare cases, this can result in a sudden shift in the scene. Rolls that excede the table bounds can be ignored or inverted.

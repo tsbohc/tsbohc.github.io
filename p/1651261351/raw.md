@@ -1,72 +1,54 @@
 <!--
 name: toki pona vsm
-peek: Distributional semantics, conlangs, and the meaning of life.
+peek: An elevator pitch for my thesis.
 tags: tokipona languages
 date: 1651628474
 -->
 
-This document is meant to serve as an informal introduction to the subject of word embedding in the context of my paper.
+## distributional semantics
 
-<!-- also, my supervisor accusing me of being unable to explain my research "in simple words". -->
-<!-- so yeh, it's written like a children's book. -->
-
-## table of contents
-
-{{TOC}}
-
-## toki!
-
-<p class='linja-pona'>jan lawa sona mi la mi sona ala e pali mi. mi la jan lawa sona mi li jan pi sona lili li toki utala e pali mi. tan ni la mi sitelen e lipu ni.</p>
-
-<p class='linja-pona'>sina ken toki kepeken toki+pona la sina sona e ijo mute pi lipu ni. sina lukin e ona la pona tawa sina a.</p>
-
-# distributional semantics
-
-In a 1957 publication[^[A Synopsis of Linguistic Theory](https://cs.brown.edu/courses/csci2952d/readings/lecture1-firth.pdf) (1957) by J. R. Firth, p.11], J. R. Firth wrote:
+In a 1957 publication^[[A Synopsis of Linguistic Theory](https://cs.brown.edu/courses/csci2952d/readings/lecture1-firth.pdf) (1957) by J. R. Firth, p.11], J. R. Firth wrote:
 
 > The placing of a text as a constituent in a context of situation contributes to the statement of meaning since situations are set up to recognise use. *You shall know a word by the company it keeps!*
 
-Here is an example to illustrate this:
+Here's an example to illustrate this:
 
 > a. A bottle of *telo nasa* is on the table.\
 > b. *telo nasa* makes people drunk.\
 > c. Only adult people can drink *telo nasa*.\
 > d. *telo nasa* is made out of oranges.
 
-Clearly, *telo nasa* refers to an alcoholic beverage. But how did we arrive at this conclusion?
+Clearly, *telo nasa* refers to an alcoholic beverage.
 
-Let us consider a few words that could replace *telo nasa* in these 4 contexts. When a word is appropriate in a context (a, b, c, or d), we will mark that context with a *y* and with a *.* when it is not.
+Now, let's consider a few words that could replace *telo nasa* in these contexts. When a word is appropriate in a context (a, b, c, or d), we will mark that context with a *y* and with a *.* when it is not.
 
-| word    |a|b|c|d|
-|-        |-|-|-|-|
-|telo nasa|y|y|y|y
-|juice    |y|.|.|y
-|pancake  |.|.|.|.
-|wine     |y|y|y|.
+| word      | a | b | c | d
+| --------- | - | - | - | -
+| telo nasa | y | y | y | y
+| juice     | y | . | . | y
+| pancake   | . | . | . | .
+| wine      | y | y | y | .
 
-- *telo nasa* is inherently appropriate in all contexts.
 - *juice* is stored in bottles and is made out of oranges, but everyone can drink juice and it does not make people drunk.
 - *pancake* fits none of the contexts.
-- *wine* fits all of the contexts but the one that specifies the main ingredient[^There are varieties of wine that are made with the inclusion of orange zest or juice, but this is irrelevant to the discussion.].
+- *wine* fits all of the contexts but the one that specifies the main ingredient^[There are varieties of wine that are made with the inclusion of orange zest or juice, but this is irrelevant to the discussion.].
 
-Because *wine* is the best fit for these contexts, we can assume that *telo nasa* shares some of its properties.
+Because *wine* makes the most sense as a replacement, we can assume that *telo nasa* shares some of its properties.
 
-Now, what if it was possible to make a computer do the same thing? That is, to infer meaning from context just like we have.
+Now, what if it was possible to make a computer to infer meaning from context just like we have?
 
 ## word embedding
 
-Let us write a program that will make a computer look through the words in a corpus, one by one. It will also count how many times each of the other words appears in the context of the current word.
+Let's write a program that will look through the words in our corpus, one by one. It will also count how many times each of the other words appears in the context of the current word. We will only consider *telo nasa* and the less general content words surrounding it.
 
-For now, let us look at the contexts from the previous example. We will only consider *telo nasa* and its surrounding content words that are less general.
-
-| |telo nasa
-|-| :-:
-|bottle|1
-|table|1
-|people|2
-|drink|2
-|adult|1
-|orange|1
+|        | telo nasa
+| ------ | :-:
+| bottle | 1
+| table  | 1
+| people | 2
+| drink  | 2
+| adult  | 1
+| orange | 1
 
 What can be said about *telo nasa* based on the data provided by the program?
 
@@ -74,20 +56,20 @@ That it is related to people and drinking, but also the legal age, bottles, and 
 
 ## word vectors
 
-Let us take the above table and divide each value by the total number of the word relationships in it (6):
+Let's take the above table and divide each value by the total number of the word relationships in it (6):
 
-| |telo nasa
-|-| :-:
-|bottle|0.16
-|table|0.16
-|people|0.33
-|drink|0.33
-|adult|0.16
-|orange|0.16
+|        | telo nasa
+| ------ | :-:
+| bottle | 0.16
+| table  | 0.16
+| people | 0.33
+| drink  | 0.33
+| adult  | 0.16
+| orange | 0.16
 
-Now *telo nasa* can be represented as a set of numbers: [0.16, 0.16, 0.33, 0.33, 0.16, 0.16]. This is its *word vector*, a numerical description of a word relative to every other word in a corpus. Every single word in a corpus can have one such vector.
+Now *telo nasa* can be represented as a set of numbers: [0.16, 0.16, 0.33, 0.33, 0.16, 0.16]. This is its *word vector*, a numerical description of a word relative to other words in a corpus. Every single word in a corpus can have one such vector.
 
-Because we are operating on vectors, the principles of linear algebra can be applied to them. We will use *cosine similarity*[^Read more about *cosine similarity* on [wikipedia](https://en.wikipedia.org/wiki/Cosine_similarity).] to determine the degree of similarity between two vectors, that is, to quantify their semantic similarity.
+Because we are operating on vectors, the principles of linear algebra can be applied to them. We will use *cosine similarity*^[Read more about *cosine similarity* on [wikipedia](https://en.wikipedia.org/wiki/Cosine_similarity).] to determine the degree of similarity between two vectors, that is, to quantify their semantic similarity.
 
 Right now, our corpus is highly specialised, but what if we had more contexts featuring more words?
 
@@ -101,7 +83,7 @@ J. R. R. Tolkien wrote books so that his languages had somewhere to live and thr
 
 In 2001, jan Sonja created *toki pona*, a philosophical constructed language centered around minimalism. The vocabulary of *toki pona* contains only 120-180 words.
 
-*toki pona* is recognised by the [ISO 639-3](https://iso639-3.sil.org/code_tables/639/data/t?title=tok&field_iso639_cd_st_mmbrshp_639_1_tid=All&name_3=&field_iso639_element_scope_tid=All&field_iso639_language_type_tid=All&items_per_page=200) registry under *tok*. It is the second most spoken[^[ISO 693-3 proposal](https://iso639-3.sil.org/sites/iso639-3/files/change_requests/2021/2021-043_tok.pdf) (2021), p.3] constructed language in the world.
+*toki pona* is recognised by the [ISO 639-3](https://iso639-3.sil.org/code_tables/639/data/t?title=tok&field_iso639_cd_st_mmbrshp_639_1_tid=All&name_3=&field_iso639_element_scope_tid=All&field_iso639_language_type_tid=All&items_per_page=200) registry under *tok*. It is the second most spoken^[[ISO 693-3 proposal](https://iso639-3.sil.org/sites/iso639-3/files/change_requests/2021/2021-043_tok.pdf) (2021), p.3.] constructed language in the world.
 
 The words *telo nasa* mean *weird liquid*, which is a common way of referring to alcohol.
 
@@ -119,21 +101,21 @@ Written in latin:
 
 > ilo pi sitelen tawa la kon li tawa suli lon tenpo pimeja ni.
 
-|word|defintion|
-|-|
-|ilo|tool, instrument|
-|pi|[modifier regroup particle]|
-|sitelen|picture, symbol|
-|tawa|movement|
-|la|[context particle]|
-|kon|air, spirit, essence|
-|li|[predicate particle]|
-|tawa|movement|
-|suli|big, old, important|
-|lon|[prepositional phrase particle]|
-|tenpo|time, duration|
-|pimeja|black, dark|
-|ni|this|
+| word    | defintion
+| ------- | -
+| ilo     | tool, instrument
+| pi      | [modifier regroup particle]
+| sitelen | picture, symbol
+| tawa    | movement
+| la      | [context particle]
+| kon     | air, spirit, essence
+| li      | [predicate particle]
+| tawa    | movement
+| suli    | big, old, important
+| lon     | [prepositional phrase particle]
+| tenpo   | time, duration
+| pimeja  | black, dark
+| ni      | this
 
 Literal interpretation:
 
@@ -157,7 +139,7 @@ The actual architecture of the model is more far involved than word counting, bu
 
 ## visualisation
 
-I have also made an interactive visualisation[^[Bokeh](https://bokeh.org/) is a Python library for creating interactive visualizations for modern web browsers.] of the model projected onto 2D space:
+I have also made an interactive visualisation^[[Bokeh](https://bokeh.org/) is a Python library for creating interactive visualizations for modern web browsers.] of the model projected onto 2D space:
 
 <div class="bk-root" id="b2752458-6f7d-42e9-ae53-b1d2f8947c05" data-root-id="1003"></div>
 <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.2.min.js"></script>
@@ -216,14 +198,14 @@ For example, we can ask the model to list words that are closely related to a pa
 vsm.most_similar('utala') =>
 ```
 
-|word|similarity|definition
-|-| :-: |-
-|lawa|0.551|head, control, rule
-|moli|0.536|death, murder
-|jan|0.427|person, people
-|wawa|0.404|power, strength
-|pakala|0.397|break, damage
-|palisa|0.360|long hard object
+| word   | similarity | definition
+| -      | :-:        | -
+| lawa   | 0.551      | head, control, rule
+| moli   | 0.536      | death, murder
+| jan    | 0.427      | person, people
+| wawa   | 0.404      | power, strength
+| pakala | 0.397      | break, damage
+| palisa | 0.360      | long hard object
 
 Or even ask the question "if *suno* (sun) is *seli* (hot), then what is something *lete* (cold) that is similar to *suno* (sun)?" using linear algebra operations:
 
@@ -231,15 +213,15 @@ Or even ask the question "if *suno* (sun) is *seli* (hot), then what is somethin
 vsm.most_similar(positive=['suno', 'lete'], negative=['seli']) =>
 ```
 
-|word|similarity|definition
-|-| :-: |-
-|mun|0.659|moon
-|pini|0.595|end, finish
-|pimeja|0.469|black, dark
+| word   | similarity | definition
+| -      | :-:        | -
+| mun    | 0.659      | moon
+| pini   | 0.595      | end, finish
+| pimeja | 0.469      | black, dark
 
-Keep in mind that there are only two words in *toki pona* that can denote celestial bodies. Also, *cosine similarity* ranges from *-1* to *1*, meaning that *0.659* is almost an exact match (83%). 
+Keep in mind that there are only two words in *toki pona* that can denote celestial bodies. Also, *cosine similarity* ranges from *-1* to *+1*, meaning that *0.659* is an *83%* match.
 
-See further examples in the library[^[Gensim](https://pypi.org/project/gensim/) is a Python library for topic modelling, document indexing and similarity retrieval with large corpora.] documentation [here](https://radimrehurek.com/gensim/models/keyedvectors.html#what-can-i-do-with-word-vectors).
+See further examples in the library^[[Gensim](https://pypi.org/project/gensim/) is a Python library for topic modelling, document indexing and similarity retrieval with large corpora.] documentation [here](https://radimrehurek.com/gensim/models/keyedvectors.html#what-can-i-do-with-word-vectors).
 
 ## making observations
 

@@ -1,74 +1,94 @@
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <link rel='shortcut icon' href='/static/favicon.ico' type='image/x-icon'>
-  <link href='/static/style.min.css' rel='stylesheet' type='text/css'>
-  <title>blagsh</title>
-</head>
-<body>
-  <nav>
-    <a href='/' class='bold'>home</a> <a href='/about' class='bold'>about</a> <!--<a href='/thoughts'>thoughts</a>-->
-     <input type='text' id='s' placeholder='search'> 
-    <script type='module' src='/static/search.js'></script>
-  </nav><span style='white-space: nowrap;'>the secret bitterness of honey cake</span>
-  <main>
-    <article>
-      <h1>blagsh</h1><!--
+
+    <!doctype html>
+    <html lang='en'>
+      <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel='shortcut icon' href='/static/favicon.ico' type='image/x-icon'>
+        <link href='/static/style.min.css' rel='stylesheet' type='text/css'>
+        <title>	blagsh</title>
+      </head>
+      <body>
+        <nav>
+          <a href='/' class='bold'>home</a>
+          <!--<a href='/thoughts'>thoughts</a>-->
+          <input type='text' id='s' placeholder='search' />
+          <script type='module' src='/static/search.js'></script>
+        </nav>
+        <span style='white-space: nowrap;'>the secret bitterness of honey cake</span>
+        
+    <main>
+      <article>
+        <h1>	blagsh</h1>
+        <!--
 name: blagsh
 peek: Portmanteaus and why I'm not allowed to make websites anymore.
 tags: blog bash
 date: 1629741133
 -->
-      <p>What tools would satisfy my minimalist heart? I sneered at python. I let jinja go. I pondered for a while. The next night, the fated words <em>parameter expansion in bash</em> came to me in my sleep.</p>
-      <pre><code class="bash">t:post() {
-  local name ; name="$(f:meta "$1" name)"
-  t:body "$name" "
-    &lt;main&gt;
-      &lt;article&gt;
-        &lt;h1&gt;$name&lt;/h1&gt;
-        $(render "$(&lt;"p/$1/raw.md")")
-        &lt;div id='meta'&gt;$(t:date "$1") $(t:tags "$1")&lt;/div&gt;
-      &lt;/article&gt;
-    &lt;/main&gt;"
-}
-</code></pre>
-      <p>Here's a short bash poem, depicting you, the reader:</p>
-      <pre><code class="bash">:|| echo "if i could speak i'd grumble"
-</code></pre>
-      <h2 id="design">design</h2>
-      <p>Visually, I wanted the blog to feel distinctly text-centric. CSS-wise, that entailed creating a monochrome pallette and abusing pseudo-elements to capture that raw markdown vibe.</p>
-      <p>Despite the templating code being the bastard child of bash and JSX, I quite like it. Having direct access to system commands is nice.</p>
-      <pre><code>t:date() {
-  echo -n "
-    &lt;time datetime='$(date '+%Y-%m-%d %H:%M' -d "@$1")'&gt;
-      $(date '+%d%m%y' -d "@$1")
-    &lt;/time&gt;"
-}
-</code></pre>
-      <p>Around the back, I ended up embedding metadata into markdown files as comments and parsing it with regex. As far as frugal solutions go, I think it's the best one.</p>
-      <pre><code>├── 1633785019
-│   ├── index.html
-│   └── raw.md
+<p>What tools would satisfy my minimalist heart? I sneered at python. I
+let jinja go. I pondered for a while. The next night, the fated words
+<em>parameter expansion in bash</em> came to me in my sleep.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t:post()</span> <span class="kw">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">local</span> <span class="va">name</span> <span class="kw">;</span> <span class="va">name</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$(</span><span class="ex">f:meta</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> name<span class="va">)</span><span class="st">&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">t:body</span> <span class="st">&quot;</span><span class="va">$name</span><span class="st">&quot;</span> <span class="st">&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;main&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">      &lt;article&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;h1&gt;</span><span class="va">$name</span><span class="st">&lt;/h1&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">        </span><span class="va">$(</span><span class="ex">render</span> <span class="st">&quot;</span><span class="va">$(</span><span class="op">&lt;</span><span class="st">&quot;p/</span><span class="va">$1</span><span class="st">/raw.md&quot;</span><span class="va">)</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;div id=&#39;meta&#39;&gt;</span><span class="va">$(</span><span class="ex">t:date</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span><span class="va">)</span><span class="st"> </span><span class="va">$(</span><span class="ex">t:tags</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span><span class="va">)</span><span class="st">&lt;/div&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">      &lt;/article&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;/main&gt;&quot;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+<p>Here's a short bash poem, depicting you, the reader:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">:</span><span class="kw">||</span> <span class="bu">echo</span> <span class="st">&quot;if i could speak i&#39;d grumble&quot;</span></span></code></pre></div>
+<h2 id="design">design</h2>
+<p>Visually, I wanted the blog to feel distinctly text-centric.
+CSS-wise, that entailed creating a monochrome pallette and abusing
+pseudo-elements to capture that raw markdown vibe.</p>
+<p>Despite the templating code being the bastard child of bash and JSX,
+I quite like it. Having direct access to system commands is nice.</p>
+<pre><code>t:date() {
+  echo -n &quot;
+    &lt;time datetime=&#39;$(date &#39;+%Y-%m-%d %H:%M&#39; -d &quot;@$1&quot;)&#39;&gt;
+      $(date &#39;+%d%m%y&#39; -d &quot;@$1&quot;)
+    &lt;/time&gt;&quot;
+}</code></pre>
+<p>Around the back, I ended up embedding metadata into markdown files as
+comments and parsing it with regex. As far as frugal solutions go, I
+think it's the best one.</p>
+<pre><code>├── 1633785019
+│   ├── index.html
+│   └── raw.md
 └── 1633890762
     ├── index.html
-    └── raw.md
-</code></pre>
-      <p>The UNIX timestamp makes for a good permalink, and I don't mind being a little cryptic. To make finding the right post easier, I'm extracting the metadata and feeding it into fzf.</p>
-      <pre><code>f:edit() { # select post in fzf to nvim
-  raw="$(for p in "p/"*; do
-    f:meta "${p##*/}" date name peek tags
-  done | awk -F "^I" '{ print $1" "$2" "$3" ("$4")" }' | fzf)"
-  [[ -n "$raw" ]] &amp;& nvim "$(awk -F " " '{ print "p/"$1"/raw.md" }' &lt;&lt;&lt; "$raw")"
-}
-</code></pre>
-      <p>There is a subcommand in the script that launches <em>http-server</em> and recompiles the html on change via <em>entr</em>.</p>
-      <p>With something like this, there really isn't much to talk about. If you're curious, I'll let the <a href="https://github.com/tsbohc/tsbohc.github.io/blob/master/honeycake">code</a> speak for itself.</p>
-      <div id='meta'>
-        <time datetime='2021-08-23 20:52'>230821</time> #<a href='/?query=%23blog' class='bold'>blog</a> #<a href='/?query=%23bash' class='bold'>bash</a>
-      </div>
-    </article>
-  </main>
-</body>
-</html>
+    └── raw.md</code></pre>
+<p>The UNIX timestamp makes for a good permalink, and I don't mind being
+a little cryptic. To make finding the right post easier, I'm extracting
+the metadata and feeding it into fzf.</p>
+<pre><code>f:edit() { # select post in fzf to nvim
+  raw=&quot;$(for p in &quot;p/&quot;*; do
+    f:meta &quot;${p##*/}&quot; date name peek tags
+  done | awk -F &quot;^I&quot; &#39;{ print $1&quot; &quot;$2&quot; &quot;$3&quot; (&quot;$4&quot;)&quot; }&#39; | fzf)&quot;
+  [[ -n &quot;$raw&quot; ]] &amp;&amp; nvim &quot;$(awk -F &quot; &quot; &#39;{ print &quot;p/&quot;$1&quot;/raw.md&quot; }&#39; &lt;&lt;&lt; &quot;$raw&quot;)&quot;
+}</code></pre>
+<p>There is a subcommand in the script that launches
+<em>http-server</em> and recompiles the html on change via
+<em>entr</em>.</p>
+<p>With something like this, there really isn't much to talk about. If
+you're curious, I'll let the <a
+href="https://github.com/tsbohc/tsbohc.github.io/blob/master/honeycake">code</a>
+speak for itself.</p>
+        <div id='meta'>
+    <time datetime='2021-08-23 20:52'>
+      230821
+    </time>
+   #<a href='/?query=%23blog' class='bold'>blog</a> #<a href='/?query=%23bash' class='bold'>bash</a></div>
+      </article>
+    </main>
+  
+      </body>
+    </html>
+  

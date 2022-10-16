@@ -1,68 +1,85 @@
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <link rel='shortcut icon' href='/static/favicon.ico' type='image/x-icon'>
-  <link href='/static/style.min.css' rel='stylesheet' type='text/css'>
-  <title>wicked array</title>
-</head>
-<body>
-  <nav>
-    <a href='/' class='bold'>home</a> <a href='/about' class='bold'>about</a> <!--<a href='/thoughts'>thoughts</a>-->
-     <input type='text' id='s' placeholder='search'> 
-    <script type='module' src='/static/search.js'></script>
-  </nav><span style='white-space: nowrap;'>the secret bitterness of honey cake</span>
-  <main>
-    <article>
-      <h1>wicked array</h1><!--
+
+    <!doctype html>
+    <html lang='en'>
+      <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel='shortcut icon' href='/static/favicon.ico' type='image/x-icon'>
+        <link href='/static/style.min.css' rel='stylesheet' type='text/css'>
+        <title>	wicked array</title>
+      </head>
+      <body>
+        <nav>
+          <a href='/' class='bold'>home</a>
+          <!--<a href='/thoughts'>thoughts</a>-->
+          <input type='text' id='s' placeholder='search' />
+          <script type='module' src='/static/search.js'></script>
+        </nav>
+        <span style='white-space: nowrap;'>the secret bitterness of honey cake</span>
+        
+    <main>
+      <article>
+        <h1>	wicked array</h1>
+        <!--
 name: wicked array
 peek: Dice math. An alternative way of rolling characters in 5E.
 tags: homebrew dnd
 date: 1633890762
 -->
-      <h2 id="standard">standard</h2>
-      <p>4d6 drop the lowest is biased and lacks control and predictability.</p>
-      <ul>
-        <li>Some characters will have a maxed out stat at level 1. All you need is a +2 racial and a pinch (1d10) of luck.</li>
-        <li>Others will end up too well-rounded, leaving no opportunity to exaggerate their flaws via stats.</li>
-        <li>Someone will roll everything below average and feel even more left out.</li>
-      </ul>
-      <p>Rolling dice is exciting and simply is not worth giving up for the standard array.</p>
-      <p>See <a href="https://anydice.com/program/24b28">anydice</a>.</p>
-      <pre><code>W: [highest 3 of 4d6]
+<h2 id="standard">standard</h2>
+<p>4d6 drop the lowest is biased and lacks control and
+predictability.</p>
+<ul>
+<li>Some characters will have a maxed out stat at level 1. All you need
+is a +2 racial and a pinch (1d10) of luck.</li>
+<li>Others will end up too well-rounded, leaving no opportunity to
+exaggerate their flaws via stats.</li>
+<li>Someone will roll everything below average and feel even more left
+out.</li>
+</ul>
+<p>Rolling dice is exciting and simply is not worth giving up for the
+standard array.</p>
+<p>See <a href="https://anydice.com/program/24b28">anydice</a>.</p>
+<pre><code>W: [highest 3 of 4d6]
 
 ABILITIES: 6 d (W)
 loop A over {1..6} {
-    output (A @ ABILITIES) named "Ability [A]"
-}
-</code></pre>
-      <h2 id="wicked">wicked</h2>
-      <ul>
-        <li>Roll 3d10 and write down the highest. Repeat six times.</li>
-        <li>Take a value from (1 2 3 4 5 6) and add it to a roll of your choice. Repeat for each stat. Each value can only be used once. Each roll can only receive one bonus value.</li>
-      </ul>
-      <p>See <a href="https://anydice.com/program/24b25">anydice</a>.</p>
-      <pre><code>W: [highest 1 of 3d10]
+    output (A @ ABILITIES) named &quot;Ability [A]&quot;
+}</code></pre>
+<h2 id="wicked">wicked</h2>
+<ul>
+<li>Roll 3d10 and write down the highest. Repeat six times.</li>
+<li>Take a value from (1 2 3 4 5 6) and add it to a roll of your choice.
+Repeat for each stat. Each value can only be used once. Each roll can
+only receive one bonus value.</li>
+</ul>
+<p>See <a href="https://anydice.com/program/24b25">anydice</a>.</p>
+<pre><code>W: [highest 1 of 3d10]
 
 ABILITIES: 6 d (W)
 loop A over {1..6} {
-    output (A @ ABILITIES + (7 - A)) named "Ability [A]"
-}
-</code></pre>
-      <ul>
-        <li>De-emphasises dice rolls while keeping them exciting.</li>
-        <li>Players have more control. They can either focus on the primary ability or settle for a more balanced build.</li>
-        <li>The resulting values are more befitting of a novice adventurer and allow for a better sense of progression.</li>
-        <li>Both strengths and flaws are more prevalent.</li>
-      </ul>
-      <p>The total is 68.9 (59-78) compared to 73.5 (61-86).</p>
-      <p>The 4 point decrease in power is negated by the fact that players can bring stats to even breakpoints via the bonus array.</p>
-      <p>Variability between totals is also reduced by 4 points.</p>
-      <div id='meta'>
-        <time datetime='2021-10-10 21:32'>101021</time> #<a href='/?query=%23homebrew' class='bold'>homebrew</a> #<a href='/?query=%23dnd' class='bold'>dnd</a>
-      </div>
-    </article>
-  </main>
-</body>
-</html>
+    output (A @ ABILITIES + (7 - A)) named &quot;Ability [A]&quot;
+}</code></pre>
+<ul>
+<li>De-emphasises dice rolls while keeping them exciting.</li>
+<li>Players have more control. They can either focus on the primary
+ability or settle for a more balanced build.</li>
+<li>The resulting values are more befitting of a novice adventurer and
+allow for a better sense of progression.</li>
+<li>Both strengths and flaws are more prevalent.</li>
+</ul>
+<p>The total is 68.9 (59-78) compared to 73.5 (61-86).</p>
+<p>The 4 point decrease in power is negated by the fact that players can
+bring stats to even breakpoints via the bonus array.</p>
+<p>Variability between totals is also reduced by 4 points.</p>
+        <div id='meta'>
+    <time datetime='2021-10-10 21:32'>
+      101021
+    </time>
+   #<a href='/?query=%23homebrew' class='bold'>homebrew</a> #<a href='/?query=%23dnd' class='bold'>dnd</a></div>
+      </article>
+    </main>
+  
+      </body>
+    </html>
+  
