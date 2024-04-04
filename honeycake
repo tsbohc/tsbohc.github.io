@@ -186,3 +186,4 @@ case $subcmd in
   -u|update) update ;;
   *) echo "static website generator" ;;
 esac
+
